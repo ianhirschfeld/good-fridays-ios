@@ -1,0 +1,507 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		6530575C1C4F77240067A1A3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6530575B1C4F77240067A1A3 /* AppDelegate.swift */; };
+		6530575E1C4F77250067A1A3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6530575D1C4F77240067A1A3 /* ViewController.swift */; };
+		653057611C4F77250067A1A3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6530575F1C4F77250067A1A3 /* Main.storyboard */; };
+		653057631C4F77250067A1A3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 653057621C4F77250067A1A3 /* Assets.xcassets */; };
+		653057661C4F77250067A1A3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 653057641C4F77250067A1A3 /* LaunchScreen.storyboard */; };
+		653057711C4F77250067A1A3 /* GOOD_FridaysTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 653057701C4F77250067A1A3 /* GOOD_FridaysTests.swift */; };
+		6530577C1C4F77250067A1A3 /* GOOD_FridaysUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6530577B1C4F77250067A1A3 /* GOOD_FridaysUITests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		6530576D1C4F77250067A1A3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 653057501C4F77240067A1A3 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 653057571C4F77240067A1A3;
+			remoteInfo = "GOOD Fridays";
+		};
+		653057781C4F77250067A1A3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 653057501C4F77240067A1A3 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 653057571C4F77240067A1A3;
+			remoteInfo = "GOOD Fridays";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		653057581C4F77240067A1A3 /* GOOD Fridays.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "GOOD Fridays.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		6530575B1C4F77240067A1A3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		6530575D1C4F77240067A1A3 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		653057601C4F77250067A1A3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		653057621C4F77250067A1A3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		653057651C4F77250067A1A3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		653057671C4F77250067A1A3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6530576C1C4F77250067A1A3 /* GOOD FridaysTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "GOOD FridaysTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		653057701C4F77250067A1A3 /* GOOD_FridaysTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GOOD_FridaysTests.swift; sourceTree = "<group>"; };
+		653057721C4F77250067A1A3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		653057771C4F77250067A1A3 /* GOOD FridaysUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "GOOD FridaysUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		6530577B1C4F77250067A1A3 /* GOOD_FridaysUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GOOD_FridaysUITests.swift; sourceTree = "<group>"; };
+		6530577D1C4F77250067A1A3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		653057551C4F77240067A1A3 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		653057691C4F77250067A1A3 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		653057741C4F77250067A1A3 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		6530574F1C4F77240067A1A3 = {
+			isa = PBXGroup;
+			children = (
+				6530575A1C4F77240067A1A3 /* GOOD Fridays */,
+				6530576F1C4F77250067A1A3 /* GOOD FridaysTests */,
+				6530577A1C4F77250067A1A3 /* GOOD FridaysUITests */,
+				653057591C4F77240067A1A3 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		653057591C4F77240067A1A3 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				653057581C4F77240067A1A3 /* GOOD Fridays.app */,
+				6530576C1C4F77250067A1A3 /* GOOD FridaysTests.xctest */,
+				653057771C4F77250067A1A3 /* GOOD FridaysUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		6530575A1C4F77240067A1A3 /* GOOD Fridays */ = {
+			isa = PBXGroup;
+			children = (
+				6530575B1C4F77240067A1A3 /* AppDelegate.swift */,
+				6530575D1C4F77240067A1A3 /* ViewController.swift */,
+				6530575F1C4F77250067A1A3 /* Main.storyboard */,
+				653057621C4F77250067A1A3 /* Assets.xcassets */,
+				653057641C4F77250067A1A3 /* LaunchScreen.storyboard */,
+				653057671C4F77250067A1A3 /* Info.plist */,
+			);
+			path = "GOOD Fridays";
+			sourceTree = "<group>";
+		};
+		6530576F1C4F77250067A1A3 /* GOOD FridaysTests */ = {
+			isa = PBXGroup;
+			children = (
+				653057701C4F77250067A1A3 /* GOOD_FridaysTests.swift */,
+				653057721C4F77250067A1A3 /* Info.plist */,
+			);
+			path = "GOOD FridaysTests";
+			sourceTree = "<group>";
+		};
+		6530577A1C4F77250067A1A3 /* GOOD FridaysUITests */ = {
+			isa = PBXGroup;
+			children = (
+				6530577B1C4F77250067A1A3 /* GOOD_FridaysUITests.swift */,
+				6530577D1C4F77250067A1A3 /* Info.plist */,
+			);
+			path = "GOOD FridaysUITests";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		653057571C4F77240067A1A3 /* GOOD Fridays */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 653057801C4F77250067A1A3 /* Build configuration list for PBXNativeTarget "GOOD Fridays" */;
+			buildPhases = (
+				653057541C4F77240067A1A3 /* Sources */,
+				653057551C4F77240067A1A3 /* Frameworks */,
+				653057561C4F77240067A1A3 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "GOOD Fridays";
+			productName = "GOOD Fridays";
+			productReference = 653057581C4F77240067A1A3 /* GOOD Fridays.app */;
+			productType = "com.apple.product-type.application";
+		};
+		6530576B1C4F77250067A1A3 /* GOOD FridaysTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 653057831C4F77250067A1A3 /* Build configuration list for PBXNativeTarget "GOOD FridaysTests" */;
+			buildPhases = (
+				653057681C4F77250067A1A3 /* Sources */,
+				653057691C4F77250067A1A3 /* Frameworks */,
+				6530576A1C4F77250067A1A3 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				6530576E1C4F77250067A1A3 /* PBXTargetDependency */,
+			);
+			name = "GOOD FridaysTests";
+			productName = "GOOD FridaysTests";
+			productReference = 6530576C1C4F77250067A1A3 /* GOOD FridaysTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		653057761C4F77250067A1A3 /* GOOD FridaysUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 653057861C4F77250067A1A3 /* Build configuration list for PBXNativeTarget "GOOD FridaysUITests" */;
+			buildPhases = (
+				653057731C4F77250067A1A3 /* Sources */,
+				653057741C4F77250067A1A3 /* Frameworks */,
+				653057751C4F77250067A1A3 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				653057791C4F77250067A1A3 /* PBXTargetDependency */,
+			);
+			name = "GOOD FridaysUITests";
+			productName = "GOOD FridaysUITests";
+			productReference = 653057771C4F77250067A1A3 /* GOOD FridaysUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		653057501C4F77240067A1A3 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0720;
+				LastUpgradeCheck = 0720;
+				ORGANIZATIONNAME = "The Soap Collective";
+				TargetAttributes = {
+					653057571C4F77240067A1A3 = {
+						CreatedOnToolsVersion = 7.2;
+					};
+					6530576B1C4F77250067A1A3 = {
+						CreatedOnToolsVersion = 7.2;
+						TestTargetID = 653057571C4F77240067A1A3;
+					};
+					653057761C4F77250067A1A3 = {
+						CreatedOnToolsVersion = 7.2;
+						TestTargetID = 653057571C4F77240067A1A3;
+					};
+				};
+			};
+			buildConfigurationList = 653057531C4F77240067A1A3 /* Build configuration list for PBXProject "GOOD Fridays" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 6530574F1C4F77240067A1A3;
+			productRefGroup = 653057591C4F77240067A1A3 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				653057571C4F77240067A1A3 /* GOOD Fridays */,
+				6530576B1C4F77250067A1A3 /* GOOD FridaysTests */,
+				653057761C4F77250067A1A3 /* GOOD FridaysUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		653057561C4F77240067A1A3 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				653057661C4F77250067A1A3 /* LaunchScreen.storyboard in Resources */,
+				653057631C4F77250067A1A3 /* Assets.xcassets in Resources */,
+				653057611C4F77250067A1A3 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6530576A1C4F77250067A1A3 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		653057751C4F77250067A1A3 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		653057541C4F77240067A1A3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6530575E1C4F77250067A1A3 /* ViewController.swift in Sources */,
+				6530575C1C4F77240067A1A3 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		653057681C4F77250067A1A3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				653057711C4F77250067A1A3 /* GOOD_FridaysTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		653057731C4F77250067A1A3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6530577C1C4F77250067A1A3 /* GOOD_FridaysUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		6530576E1C4F77250067A1A3 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 653057571C4F77240067A1A3 /* GOOD Fridays */;
+			targetProxy = 6530576D1C4F77250067A1A3 /* PBXContainerItemProxy */;
+		};
+		653057791C4F77250067A1A3 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 653057571C4F77240067A1A3 /* GOOD Fridays */;
+			targetProxy = 653057781C4F77250067A1A3 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		6530575F1C4F77250067A1A3 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				653057601C4F77250067A1A3 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		653057641C4F77250067A1A3 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				653057651C4F77250067A1A3 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		6530577E1C4F77250067A1A3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		6530577F1C4F77250067A1A3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		653057811C4F77250067A1A3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = "GOOD Fridays/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.thesoapcollective.GOOD-Fridays";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		653057821C4F77250067A1A3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = "GOOD Fridays/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.thesoapcollective.GOOD-Fridays";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		653057841C4F77250067A1A3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = "GOOD FridaysTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.thesoapcollective.GOOD-FridaysTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/GOOD Fridays.app/GOOD Fridays";
+			};
+			name = Debug;
+		};
+		653057851C4F77250067A1A3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = "GOOD FridaysTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.thesoapcollective.GOOD-FridaysTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/GOOD Fridays.app/GOOD Fridays";
+			};
+			name = Release;
+		};
+		653057871C4F77250067A1A3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = "GOOD FridaysUITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.thesoapcollective.GOOD-FridaysUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = "GOOD Fridays";
+				USES_XCTRUNNER = YES;
+			};
+			name = Debug;
+		};
+		653057881C4F77250067A1A3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = "GOOD FridaysUITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.thesoapcollective.GOOD-FridaysUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = "GOOD Fridays";
+				USES_XCTRUNNER = YES;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		653057531C4F77240067A1A3 /* Build configuration list for PBXProject "GOOD Fridays" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6530577E1C4F77250067A1A3 /* Debug */,
+				6530577F1C4F77250067A1A3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		653057801C4F77250067A1A3 /* Build configuration list for PBXNativeTarget "GOOD Fridays" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				653057811C4F77250067A1A3 /* Debug */,
+				653057821C4F77250067A1A3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		653057831C4F77250067A1A3 /* Build configuration list for PBXNativeTarget "GOOD FridaysTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				653057841C4F77250067A1A3 /* Debug */,
+				653057851C4F77250067A1A3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		653057861C4F77250067A1A3 /* Build configuration list for PBXNativeTarget "GOOD FridaysUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				653057871C4F77250067A1A3 /* Debug */,
+				653057881C4F77250067A1A3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 653057501C4F77240067A1A3 /* Project object */;
+}
