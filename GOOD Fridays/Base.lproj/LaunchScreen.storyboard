@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8150" systemVersion="15A204g" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" initialViewController="01J-lp-oVM">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" initialViewController="01J-lp-oVM">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8122"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -15,8 +15,39 @@
                     <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <animations/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eLj-0K-YJx">
+                                <rect key="frame" x="202" y="233" width="196" height="134"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="GOOD" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="agf-on-pa3">
+                                        <rect key="frame" x="0.0" y="0.0" width="196" height="82"/>
+                                        <fontDescription key="fontDescription" name="AvenirNext-Heavy" family="Avenir Next" pointSize="60"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Fridays" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ab3-DA-ufB">
+                                        <rect key="frame" x="0.0" y="52" width="196" height="82"/>
+                                        <fontDescription key="fontDescription" name="AvenirNext-DemiBoldItalic" family="Avenir Next" pointSize="60"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="agf-on-pa3" secondAttribute="trailing" id="2Yv-NY-oaE"/>
+                                    <constraint firstAttribute="bottom" secondItem="Ab3-DA-ufB" secondAttribute="bottom" id="GHq-KF-QYF"/>
+                                    <constraint firstItem="agf-on-pa3" firstAttribute="top" secondItem="eLj-0K-YJx" secondAttribute="top" id="GpG-lY-eBj"/>
+                                    <constraint firstItem="agf-on-pa3" firstAttribute="leading" secondItem="eLj-0K-YJx" secondAttribute="leading" id="bdz-Ml-wGl"/>
+                                    <constraint firstAttribute="trailing" secondItem="Ab3-DA-ufB" secondAttribute="trailing" id="ohL-94-dGW"/>
+                                    <constraint firstItem="Ab3-DA-ufB" firstAttribute="top" secondItem="agf-on-pa3" secondAttribute="bottom" constant="-30" id="qWY-5t-GLc"/>
+                                    <constraint firstItem="Ab3-DA-ufB" firstAttribute="leading" secondItem="eLj-0K-YJx" secondAttribute="leading" id="wlq-qN-hFb"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" red="0.1529411765" green="0.1529411765" blue="0.1529411765" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="eLj-0K-YJx" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="EJd-rM-p9b"/>
+                            <constraint firstItem="eLj-0K-YJx" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="QgS-GY-bhI"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>

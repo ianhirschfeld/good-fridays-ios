@@ -1,25 +1,71 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6211" systemVersion="14A298i" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="1X4-cQ-1dc">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6204"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
-        <scene sceneID="tne-QT-ifu">
+        <!--Main Page View Controller-->
+        <scene sceneID="kFA-6t-kZt">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
-                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <pageViewController autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="1X4-cQ-1dc" customClass="MainPageViewController" customModule="GOOD_Fridays" customModuleProvider="target" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="yh3-RQ-WF9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="1026" y="375"/>
+        </scene>
+        <!--Track View Controller-->
+        <scene sceneID="15p-uY-fl3">
+            <objects>
+                <viewController storyboardIdentifier="TrackViewController" id="Bfi-ez-Idg" customClass="TrackViewController" customModule="GOOD_Fridays" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="eWc-mz-EWi"/>
+                        <viewControllerLayoutGuide type="bottom" id="14p-LQ-BYU"/>
+                    </layoutGuides>
+                    <view key="view" clipsSubviews="YES" contentMode="scaleToFill" id="hyo-sr-m2s">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="800"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="1Ih-8j-bDw">
+                                <rect key="frame" x="-50" y="-50" width="700" height="900"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="XZ7-kw-4RI">
+                                <rect key="frame" x="20" y="40" width="560" height="560"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="XZ7-kw-4RI" secondAttribute="height" multiplier="1:1" id="DeI-ki-wzU"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Track Title" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YzF-xi-geS">
+                                <rect key="frame" x="50" y="620" width="500" height="28"/>
+                                <fontDescription key="fontDescription" name="AvenirNext-Heavy" family="Avenir Next" pointSize="20"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="0.1529411765" green="0.1529411765" blue="0.1529411765" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="XZ7-kw-4RI" firstAttribute="top" secondItem="eWc-mz-EWi" secondAttribute="bottom" constant="20" id="5A3-At-7p9"/>
+                            <constraint firstItem="YzF-xi-geS" firstAttribute="top" secondItem="XZ7-kw-4RI" secondAttribute="bottom" constant="20" id="7pu-A0-CEf"/>
+                            <constraint firstAttribute="trailing" secondItem="XZ7-kw-4RI" secondAttribute="trailing" constant="20" id="9uj-zU-XLE"/>
+                            <constraint firstAttribute="trailing" secondItem="YzF-xi-geS" secondAttribute="trailing" constant="50" id="Kl5-in-9LO"/>
+                            <constraint firstItem="1Ih-8j-bDw" firstAttribute="leading" secondItem="hyo-sr-m2s" secondAttribute="leading" constant="-50" id="OJh-0V-6Q4"/>
+                            <constraint firstItem="YzF-xi-geS" firstAttribute="leading" secondItem="hyo-sr-m2s" secondAttribute="leading" constant="50" id="WKL-VS-7TS"/>
+                            <constraint firstAttribute="trailing" secondItem="1Ih-8j-bDw" secondAttribute="trailing" constant="-50" id="bKS-dT-dbw"/>
+                            <constraint firstItem="XZ7-kw-4RI" firstAttribute="leading" secondItem="hyo-sr-m2s" secondAttribute="leading" constant="20" id="nCd-O7-tZ7"/>
+                            <constraint firstItem="14p-LQ-BYU" firstAttribute="top" secondItem="1Ih-8j-bDw" secondAttribute="bottom" constant="-50" id="pgg-p9-Yzs"/>
+                            <constraint firstItem="1Ih-8j-bDw" firstAttribute="top" secondItem="hyo-sr-m2s" secondAttribute="top" constant="-50" id="rz0-V3-1uQ"/>
+                        </constraints>
+                    </view>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="600" height="800"/>
+                    <connections>
+                        <outlet property="trackArtImageView" destination="XZ7-kw-4RI" id="X1Q-D5-r3o"/>
+                        <outlet property="trackBackgroundArtImageView" destination="1Ih-8j-bDw" id="udc-ey-hN6"/>
+                        <outlet property="trackTitleLabel" destination="YzF-xi-geS" id="htl-uw-Ctt"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="u5z-Cp-dCB" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1734" y="475"/>
         </scene>
     </scenes>
 </document>
