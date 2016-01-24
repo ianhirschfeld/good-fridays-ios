@@ -81,7 +81,7 @@
                                     <action selector="playButtonTapped:" destination="Bfi-ez-Idg" eventType="touchUpInside" id="ZXe-yV-Wn5"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5R8-U6-508">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5R8-U6-508">
                                 <rect key="frame" x="390" y="648" width="50" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="50" id="Vme-Xs-mDT"/>
@@ -89,6 +89,9 @@
                                 </constraints>
                                 <inset key="contentEdgeInsets" minX="15" minY="15" maxX="15" maxY="15"/>
                                 <state key="normal" image="next"/>
+                                <connections>
+                                    <action selector="previousButtonTapper:" destination="Bfi-ez-Idg" eventType="touchUpInside" id="Sy1-FP-8cu"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HtM-b0-y2P">
                                 <rect key="frame" x="160" y="648" width="50" height="50"/>
@@ -98,6 +101,9 @@
                                 </constraints>
                                 <inset key="contentEdgeInsets" minX="15" minY="15" maxX="15" maxY="15"/>
                                 <state key="normal" image="next"/>
+                                <connections>
+                                    <action selector="nextButtonTapped:" destination="Bfi-ez-Idg" eventType="touchUpInside" id="Wd9-OB-bqq"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="0.1529411765" green="0.1529411765" blue="0.1529411765" alpha="1" colorSpace="calibratedRGB"/>

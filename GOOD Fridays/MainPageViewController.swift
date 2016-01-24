@@ -43,6 +43,7 @@ class MainPageViewController: UIPageViewController {
   func viewControllerAtIndex(index: Int) -> TrackViewController? {
     if index < 0 || index >= data.count { return nil }
     let trackViewController = storyboard?.instantiateViewControllerWithIdentifier("TrackViewController") as! TrackViewController
+    trackViewController.delegate = self
     trackViewController.trackData = data[index]
     return trackViewController
   }

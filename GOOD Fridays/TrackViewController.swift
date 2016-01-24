@@ -13,6 +13,9 @@ import SwiftyJSON
 
 class TrackViewController: UIViewController {
 
+  @IBOutlet weak var nextButton: UIButton!
+  @IBOutlet weak var playButton: UIButton!
+  @IBOutlet weak var previousButton: UIButton!
   @IBOutlet weak var trackArtImageView: UIImageView!
   @IBOutlet weak var trackBackgroundArtImageView: UIImageView!
   @IBOutlet weak var trackDurationLabel: UILabel!
@@ -21,18 +24,18 @@ class TrackViewController: UIViewController {
   @IBOutlet weak var trackTimelineProgressView: UIView!
   @IBOutlet weak var trackTitleLabel: UILabel!
 
-  @IBOutlet weak var nextButton: UIButton!
-  @IBOutlet weak var playButton: UIButton!
-  @IBOutlet weak var previousButton: UIButton!
-
   @IBOutlet weak var trackTimelineProgressTrailingConstraint: NSLayoutConstraint!
 
+  weak var delegate: MainPageViewController!
+  var isPlaying = false
   var player: AVPlayer!
   var trackData: JSON!
   var trackProgress: CMTime!
   var trackTimeObserver: AnyObject?
 
-  var isPlaying = false
+  var index: Int {
+    return delegate.data.arrayValue.indexOf({ $0["id"].numberValue == self.trackData["id"].numberValue })!
+  }
 
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -59,6 +62,10 @@ class TrackViewController: UIViewController {
     nextButton.imageView?.contentMode = .ScaleAspectFit
     nextButton.setImage(nextButton.imageView?.image?.imageWithRenderingMode(.AlwaysTemplate), forState: .Normal)
     nextButton.tintColor = UIColor.whiteColor()
+    if index >= delegate.data.arrayValue.count - 1 {
+      nextButton.enabled = false
+      nextButton.alpha = 0.3
+    }
 
     playButton.layer.borderColor = UIColor(white: 1, alpha: 0.5).CGColor
     playButton.layer.borderWidth = 2
@@ -74,6 +81,10 @@ class TrackViewController: UIViewController {
     previousButton.setImage(previousButton.imageView?.image?.imageWithRenderingMode(.AlwaysTemplate), forState: .Normal)
     previousButton.tintColor = UIColor.whiteColor()
     previousButton.imageView?.transform = CGAffineTransformMakeRotation(CGFloat(M_PI))
+    if index <= 0 {
+      previousButton.enabled = false
+      previousButton.alpha = 0.3
+    }
 
     trackTimelineProgressTrailingConstraint.constant = view.frame.width - 40
     view.layoutIfNeeded()
@@ -84,6 +95,7 @@ class TrackViewController: UIViewController {
     trackProgress = player.currentTime()
   }
 
+  // MARK: Player Controls
   @IBAction func playButtonTapped(sender: UIButton) {
     if isPlaying {
       isPlaying = false
@@ -111,6 +123,12 @@ class TrackViewController: UIViewController {
         self.view.layoutIfNeeded()
       })
     }
+  }
+
+  @IBAction func nextButtonTapped(sender: UIButton) {
+  }
+
+  @IBAction func previousButtonTapper(sender: UIButton) {
   }
 
 }
