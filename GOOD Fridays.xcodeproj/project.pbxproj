@@ -16,6 +16,7 @@
 		653057661C4F77250067A1A3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 653057641C4F77250067A1A3 /* LaunchScreen.storyboard */; };
 		653057711C4F77250067A1A3 /* GOOD_FridaysTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 653057701C4F77250067A1A3 /* GOOD_FridaysTests.swift */; };
 		6530577C1C4F77250067A1A3 /* GOOD_FridaysUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6530577B1C4F77250067A1A3 /* GOOD_FridaysUITests.swift */; };
+		65EE70461C5711C900E377CC /* Global.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65EE70451C5711C900E377CC /* Global.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +52,7 @@
 		653057771C4F77250067A1A3 /* GOOD FridaysUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "GOOD FridaysUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6530577B1C4F77250067A1A3 /* GOOD_FridaysUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GOOD_FridaysUITests.swift; sourceTree = "<group>"; };
 		6530577D1C4F77250067A1A3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		65EE70451C5711C900E377CC /* Global.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Global.swift; sourceTree = "<group>"; };
 		BFF91D94D137947A6F5E2F45 /* Pods-GOOD Fridays.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GOOD Fridays.release.xcconfig"; path = "Pods/Target Support Files/Pods-GOOD Fridays/Pods-GOOD Fridays.release.xcconfig"; sourceTree = "<group>"; };
 		E94B1FFA5CAD6724FADA318E /* Pods-GOOD Fridays.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GOOD Fridays.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GOOD Fridays/Pods-GOOD Fridays.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -117,6 +119,7 @@
 			children = (
 				6516BBCE1C50636E005F6C83 /* MainPageViewController.swift */,
 				6516BBD01C5065A8005F6C83 /* TrackViewController.swift */,
+				65EE70451C5711C900E377CC /* Global.swift */,
 				6530575B1C4F77240067A1A3 /* AppDelegate.swift */,
 				6530575F1C4F77250067A1A3 /* Main.storyboard */,
 				653057621C4F77250067A1A3 /* Assets.xcassets */,
@@ -334,6 +337,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				65EE70461C5711C900E377CC /* Global.swift in Sources */,
 				6516BBCF1C50636E005F6C83 /* MainPageViewController.swift in Sources */,
 				6516BBD11C5065A8005F6C83 /* TrackViewController.swift in Sources */,
 				6530575C1C4F77240067A1A3 /* AppDelegate.swift in Sources */,
