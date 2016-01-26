@@ -94,6 +94,7 @@ class TrackViewController: UIViewController {
     let playerItem = AVPlayerItem(URL: trackUrl)
     player = AVPlayer(playerItem: playerItem)
     trackProgress = player.currentTime()
+    NSNotificationCenter.defaultCenter().addObserver(self, selector: "playerFinished:", name: AVPlayerItemDidPlayToEndTimeNotification, object: playerItem)
 
     let timelinePanGesture = UIPanGestureRecognizer(target: self, action: "timelinePan:")
     timelinePanGesture.maximumNumberOfTouches = 1
@@ -108,12 +109,29 @@ class TrackViewController: UIViewController {
     }
   }
 
+  deinit {
+    NSNotificationCenter.defaultCenter().removeObserver(self)
+    if let observer = trackTimeObserver {
+      player.removeTimeObserver(observer)
+      trackTimeObserver = nil
+    }
+  }
+
   func timestamp(seconds: Double) -> String {
     let minutes = Int(floor(seconds / 60))
     let seconds = Int(floor(seconds - Double(minutes * 60)))
     var timestamp = "\(minutes):"
     timestamp += seconds >= 10 ? "\(seconds)" : "0\(seconds)"
     return timestamp
+  }
+
+  func playerFinished(notification: NSNotification) {
+    playButtonTapped(playButton)
+    let time = CMTime(seconds: 0, preferredTimescale: player.currentTime().timescale)
+    player.seekToTime(time)
+    trackProgress = time
+    trackProgressLabel.text = timestamp(0)
+    trackTimelineProgressTrailingConstraint.constant = trackTimelineView.frame.width
   }
 
   // MARK: Player Controls
