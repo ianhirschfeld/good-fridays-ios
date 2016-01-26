@@ -2,6 +2,7 @@
   "images" : [
     {
       "idiom" : "universal",
+      "filename" : "next.png",
       "scale" : "1x"
     },
     {
