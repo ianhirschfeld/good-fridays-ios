@@ -34,6 +34,7 @@ class TrackViewController: UIViewController {
   weak var delegate: TrackPageViewController!
   var isPlaying = false
   var wasPlaying = false
+  var shouldAutoPlay = false
   var player: AVPlayer!
   var trackData: JSON!
   var trackProgress: CMTime!
@@ -109,6 +110,15 @@ class TrackViewController: UIViewController {
     NSNotificationCenter.defaultCenter().addObserver(self, selector: "playerFinished:", name: AVPlayerItemDidPlayToEndTimeNotification, object: playerItem)
   }
 
+  override func viewDidAppear(animated: Bool) {
+    super.viewDidAppear(animated)
+
+    if shouldAutoPlay {
+      shouldAutoPlay = false
+      playButtonTapped(playButton)
+    }
+  }
+
   override func viewDidDisappear(animated: Bool) {
     super.viewDidDisappear(animated)
 
@@ -171,11 +181,15 @@ class TrackViewController: UIViewController {
       playButton.contentEdgeInsets = UIEdgeInsets(top: 30, left: 33, bottom: 30, right: 27)
     } else {
       isPlaying = true
-      player.seekToTime(trackProgress, completionHandler: { (completed) -> Void in
-        self.player.play()
-//        self.playButton.setImage(UIImage(named: "pause")?.imageWithRenderingMode(.AlwaysTemplate), forState: .Normal)
-        self.playButton.contentEdgeInsets = UIEdgeInsets(top: 30, left: 30, bottom: 30, right: 30)
-      })
+      if trackProgress.seconds == 0 {
+        player.play()
+      } else {
+        player.seekToTime(trackProgress, completionHandler: { (completed) -> Void in
+          self.player.play()
+//          self.playButton.setImage(UIImage(named: "pause")?.imageWithRenderingMode(.AlwaysTemplate), forState: .Normal)
+          self.playButton.contentEdgeInsets = UIEdgeInsets(top: 30, left: 30, bottom: 30, right: 30)
+        })
+      }
       trackTimeObserver = player.addPeriodicTimeObserverForInterval(CMTimeMake(1, 10), queue: dispatch_get_main_queue(), usingBlock: { (time) -> Void in
         self.trackProgressLabel.text = self.timestamp(self.player.currentTime().seconds)
         let percent = CGFloat(self.player.currentTime().seconds / (self.trackData["duration"].doubleValue / 1000))

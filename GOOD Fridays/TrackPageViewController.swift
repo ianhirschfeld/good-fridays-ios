@@ -22,6 +22,7 @@ class TrackPageViewController: UIPageViewController {
 
     let index = startingIndex != nil ? startingIndex! : 0
     if let startingTrackViewController = viewControllerAtIndex(index) {
+      startingTrackViewController.shouldAutoPlay = true
       setViewControllers([startingTrackViewController], direction: .Reverse, animated: false, completion: nil)
     }
   }
