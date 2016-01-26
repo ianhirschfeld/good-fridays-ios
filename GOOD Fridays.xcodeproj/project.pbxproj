@@ -8,7 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		15F6E69F536CA4E93714925A /* Pods_GOOD_Fridays.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06E3926133D903FBA26A2632 /* Pods_GOOD_Fridays.framework */; };
-		6516BBCF1C50636E005F6C83 /* MainPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6516BBCE1C50636E005F6C83 /* MainPageViewController.swift */; };
+		6515EC121C57444B00783D35 /* TrackCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6515EC111C57444B00783D35 /* TrackCollectionViewController.swift */; };
+		6515EC161C5749CD00783D35 /* TrackCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6515EC151C5749CD00783D35 /* TrackCollectionViewCell.swift */; };
+		6516BBCF1C50636E005F6C83 /* TrackPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6516BBCE1C50636E005F6C83 /* TrackPageViewController.swift */; };
 		6516BBD11C5065A8005F6C83 /* TrackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6516BBD01C5065A8005F6C83 /* TrackViewController.swift */; };
 		6530575C1C4F77240067A1A3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6530575B1C4F77240067A1A3 /* AppDelegate.swift */; };
 		653057611C4F77250067A1A3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6530575F1C4F77250067A1A3 /* Main.storyboard */; };
@@ -38,7 +40,9 @@
 
 /* Begin PBXFileReference section */
 		06E3926133D903FBA26A2632 /* Pods_GOOD_Fridays.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GOOD_Fridays.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		6516BBCE1C50636E005F6C83 /* MainPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainPageViewController.swift; sourceTree = "<group>"; };
+		6515EC111C57444B00783D35 /* TrackCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrackCollectionViewController.swift; sourceTree = "<group>"; };
+		6515EC151C5749CD00783D35 /* TrackCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrackCollectionViewCell.swift; sourceTree = "<group>"; };
+		6516BBCE1C50636E005F6C83 /* TrackPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrackPageViewController.swift; sourceTree = "<group>"; };
 		6516BBD01C5065A8005F6C83 /* TrackViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrackViewController.swift; sourceTree = "<group>"; };
 		653057581C4F77240067A1A3 /* GOOD Fridays.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "GOOD Fridays.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6530575B1C4F77240067A1A3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -92,6 +96,32 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		6515EC101C57434E00783D35 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				6515EC111C57444B00783D35 /* TrackCollectionViewController.swift */,
+				6516BBCE1C50636E005F6C83 /* TrackPageViewController.swift */,
+				6516BBD01C5065A8005F6C83 /* TrackViewController.swift */,
+			);
+			name = ViewControllers;
+			sourceTree = "<group>";
+		};
+		6515EC131C57496F00783D35 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				6515EC141C57497600783D35 /* CollectionViewCells */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		6515EC141C57497600783D35 /* CollectionViewCells */ = {
+			isa = PBXGroup;
+			children = (
+				6515EC151C5749CD00783D35 /* TrackCollectionViewCell.swift */,
+			);
+			name = CollectionViewCells;
+			sourceTree = "<group>";
+		};
 		6530574F1C4F77240067A1A3 = {
 			isa = PBXGroup;
 			children = (
@@ -117,8 +147,8 @@
 		6530575A1C4F77240067A1A3 /* GOOD Fridays */ = {
 			isa = PBXGroup;
 			children = (
-				6516BBCE1C50636E005F6C83 /* MainPageViewController.swift */,
-				6516BBD01C5065A8005F6C83 /* TrackViewController.swift */,
+				6515EC131C57496F00783D35 /* Views */,
+				6515EC101C57434E00783D35 /* ViewControllers */,
 				65EE70451C5711C900E377CC /* Global.swift */,
 				6530575B1C4F77240067A1A3 /* AppDelegate.swift */,
 				6530575F1C4F77250067A1A3 /* Main.storyboard */,
@@ -339,8 +369,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				65EE70461C5711C900E377CC /* Global.swift in Sources */,
-				6516BBCF1C50636E005F6C83 /* MainPageViewController.swift in Sources */,
+				6516BBCF1C50636E005F6C83 /* TrackPageViewController.swift in Sources */,
+				6515EC121C57444B00783D35 /* TrackCollectionViewController.swift in Sources */,
 				6516BBD11C5065A8005F6C83 /* TrackViewController.swift in Sources */,
+				6515EC161C5749CD00783D35 /* TrackCollectionViewCell.swift in Sources */,
 				6530575C1C4F77240067A1A3 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

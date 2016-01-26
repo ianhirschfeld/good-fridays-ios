@@ -29,7 +29,7 @@ class TrackViewController: UIViewController {
   @IBOutlet weak var trackArtImageViewTrailingConstraint: NSLayoutConstraint!
   @IBOutlet weak var trackTimelineProgressTrailingConstraint: NSLayoutConstraint!
 
-  weak var delegate: MainPageViewController!
+  weak var delegate: TrackPageViewController!
   var isPlaying = false
   var wasPlaying = false
   var player: AVPlayer!
@@ -38,7 +38,7 @@ class TrackViewController: UIViewController {
   var trackTimeObserver: AnyObject?
 
   var index: Int {
-    return delegate.data.arrayValue.indexOf({ $0["id"].numberValue == self.trackData["id"].numberValue })!
+    return Global.tracks.indexOf({ $0["id"].numberValue == self.trackData["id"].numberValue })!
   }
 
   override func viewDidLoad() {
@@ -65,7 +65,7 @@ class TrackViewController: UIViewController {
     nextButton.imageView?.contentMode = .ScaleAspectFit
     nextButton.setImage(nextButton.imageView?.image?.imageWithRenderingMode(.AlwaysTemplate), forState: .Normal)
     nextButton.tintColor = UIColor.whiteColor()
-    if index >= delegate.data.arrayValue.count - 1 {
+    if index >= Global.tracks.count - 1 {
       nextButton.enabled = false
       nextButton.alpha = 0.3
     }

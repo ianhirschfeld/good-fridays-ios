@@ -1,17 +1,15 @@
 //
-//  Global.swift
+//  TrackCollectionViewCell.swift
 //  GOOD Fridays
 //
 //  Created by Ian Hirschfeld on 1/25/16.
 //  Copyright © 2016 The Soap Collective. All rights reserved.
 //
 
-import SwiftyJSON
 import UIKit
 
-struct Global {
+class TrackCollectionViewCell: UICollectionViewCell {
 
-  static var isPlaying = false
-  static var tracks = [JSON]()
+  @IBOutlet weak var trackArtImageView: UIImageView!
 
 }

@@ -16,37 +16,36 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eLj-0K-YJx">
-                                <rect key="frame" x="175" y="140" width="250" height="321"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="a5y-q0-22S">
+                                <rect key="frame" x="0.0" y="230" width="600" height="140"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon" translatesAutoresizingMaskIntoConstraints="NO" id="BZH-RU-GhD">
-                                        <rect key="frame" x="0.0" y="0.0" width="250" height="250"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="250" id="Ab9-6S-VGd"/>
-                                            <constraint firstAttribute="width" constant="250" id="jVt-Wl-02d"/>
-                                        </constraints>
-                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="GOOD" textAlignment="center" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1AG-eC-e1d">
+                                        <rect key="frame" x="207" y="0.0" width="187" height="74"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="62"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Fridays" textAlignment="center" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ab3-DA-ufB">
-                                        <rect key="frame" x="33" y="250" width="185" height="71"/>
+                                        <rect key="frame" x="208" y="69" width="185" height="71"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="60"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="bottom" secondItem="Ab3-DA-ufB" secondAttribute="bottom" id="3Qg-ot-bNi"/>
-                                    <constraint firstAttribute="trailing" secondItem="BZH-RU-GhD" secondAttribute="trailing" id="5v2-Ke-aTW"/>
-                                    <constraint firstItem="Ab3-DA-ufB" firstAttribute="top" secondItem="BZH-RU-GhD" secondAttribute="bottom" id="Et0-dn-KxU"/>
-                                    <constraint firstItem="BZH-RU-GhD" firstAttribute="leading" secondItem="eLj-0K-YJx" secondAttribute="leading" id="JIz-Sk-ZwT"/>
-                                    <constraint firstItem="Ab3-DA-ufB" firstAttribute="centerX" secondItem="BZH-RU-GhD" secondAttribute="centerX" id="UXc-hT-gXn"/>
-                                    <constraint firstItem="BZH-RU-GhD" firstAttribute="top" secondItem="eLj-0K-YJx" secondAttribute="top" id="aR9-oa-pil"/>
+                                    <constraint firstItem="Ab3-DA-ufB" firstAttribute="centerX" secondItem="a5y-q0-22S" secondAttribute="centerX" id="0Cj-wc-ocw"/>
+                                    <constraint firstAttribute="bottom" secondItem="Ab3-DA-ufB" secondAttribute="bottom" id="Dm6-Yt-Q33"/>
+                                    <constraint firstItem="1AG-eC-e1d" firstAttribute="top" secondItem="a5y-q0-22S" secondAttribute="top" id="R8G-xn-mwH"/>
+                                    <constraint firstItem="1AG-eC-e1d" firstAttribute="centerX" secondItem="a5y-q0-22S" secondAttribute="centerX" id="gS8-xP-GRI"/>
+                                    <constraint firstItem="Ab3-DA-ufB" firstAttribute="top" secondItem="1AG-eC-e1d" secondAttribute="bottom" constant="-5" id="nhE-fm-of9"/>
                                 </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" red="0.1529411765" green="0.1529411765" blue="0.1529411765" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="eLj-0K-YJx" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="EJd-rM-p9b"/>
-                            <constraint firstItem="eLj-0K-YJx" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="QgS-GY-bhI"/>
+                            <constraint firstItem="a5y-q0-22S" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="6Fa-Ar-MPD"/>
+                            <constraint firstAttribute="trailing" secondItem="a5y-q0-22S" secondAttribute="trailing" id="CZT-w8-EWO"/>
+                            <constraint firstItem="a5y-q0-22S" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="PK6-4h-jgi"/>
                         </constraints>
                     </view>
                 </viewController>
@@ -55,7 +54,4 @@
             <point key="canvasLocation" x="53" y="375"/>
         </scene>
     </scenes>
-    <resources>
-        <image name="icon" width="250" height="250"/>
-    </resources>
 </document>
