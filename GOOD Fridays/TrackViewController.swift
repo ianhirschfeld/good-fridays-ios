@@ -117,12 +117,13 @@ class TrackViewController: UIViewController {
 
     if view.frame.width >= view.frame.height {
       let targetHeight = view.frame.height / 2
-      let targetPadding = (view.frame.width - targetHeight) / 2
+      let targetPadding = (view.frame.width - targetHeight - 50) / 2
       trackArtImageViewLeadingConstraint.constant = targetPadding
       trackArtImageViewTrailingConstraint.constant = targetPadding
     } else {
-      trackArtImageViewLeadingConstraint.constant = 20
-      trackArtImageViewTrailingConstraint.constant = 20
+      let padding: CGFloat = UIDevice.currentDevice().userInterfaceIdiom == .Pad ? 40 : 20
+      trackArtImageViewLeadingConstraint.constant = padding
+      trackArtImageViewTrailingConstraint.constant = padding
     }
   }
 

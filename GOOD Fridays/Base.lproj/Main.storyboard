@@ -35,20 +35,20 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Track Title" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YzF-xi-geS">
-                                <rect key="frame" x="50" y="620" width="500" height="28"/>
-                                <fontDescription key="fontDescription" name="AvenirNext-Heavy" family="Avenir Next" pointSize="20"/>
+                                <rect key="frame" x="50" y="620" width="500" height="24"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="20"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3:42" textAlignment="right" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JJM-6p-YJ9">
-                                <rect key="frame" x="551" y="748" width="29" height="19"/>
-                                <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="14"/>
+                                <rect key="frame" x="553" y="751" width="27" height="16"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1:51" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9a7-vZ-H4z">
-                                <rect key="frame" x="20" y="748" width="30" height="19"/>
-                                <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="14"/>
+                                <rect key="frame" x="20" y="751" width="28" height="16"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -117,11 +117,15 @@
                             <constraint firstItem="5R8-U6-508" firstAttribute="leading" secondItem="89n-Kh-RwR" secondAttribute="trailing" constant="40" id="3Kl-i9-28v"/>
                             <constraint firstAttribute="trailing" secondItem="T5Z-Pd-F6u" secondAttribute="trailing" id="4Eu-1L-nsg"/>
                             <constraint firstItem="vOT-5l-Gtx" firstAttribute="leading" secondItem="hyo-sr-m2s" secondAttribute="leading" constant="20" id="4iX-ca-XqN"/>
-                            <constraint firstItem="XZ7-kw-4RI" firstAttribute="top" secondItem="eWc-mz-EWi" secondAttribute="bottom" constant="20" id="5A3-At-7p9"/>
+                            <constraint firstItem="XZ7-kw-4RI" firstAttribute="top" secondItem="eWc-mz-EWi" secondAttribute="bottom" constant="20" id="5A3-At-7p9">
+                                <variation key="heightClass=regular-widthClass=regular" constant="40"/>
+                            </constraint>
                             <constraint firstItem="YzF-xi-geS" firstAttribute="top" secondItem="XZ7-kw-4RI" secondAttribute="bottom" constant="20" id="7pu-A0-CEf"/>
                             <constraint firstItem="vOT-5l-Gtx" firstAttribute="top" secondItem="JJM-6p-YJ9" secondAttribute="bottom" constant="6" id="7xY-Cs-DDR"/>
                             <constraint firstItem="89n-Kh-RwR" firstAttribute="centerX" secondItem="hyo-sr-m2s" secondAttribute="centerX" id="96i-gx-2Bz"/>
-                            <constraint firstAttribute="trailing" secondItem="XZ7-kw-4RI" secondAttribute="trailing" constant="20" id="9uj-zU-XLE"/>
+                            <constraint firstAttribute="trailing" secondItem="XZ7-kw-4RI" secondAttribute="trailing" constant="20" id="9uj-zU-XLE">
+                                <variation key="heightClass=regular-widthClass=regular" constant="40"/>
+                            </constraint>
                             <constraint firstAttribute="trailing" secondItem="YzF-xi-geS" secondAttribute="trailing" constant="50" id="Kl5-in-9LO"/>
                             <constraint firstItem="1Ih-8j-bDw" firstAttribute="leading" secondItem="hyo-sr-m2s" secondAttribute="leading" constant="-50" id="OJh-0V-6Q4"/>
                             <constraint firstItem="14p-LQ-BYU" firstAttribute="top" secondItem="vOT-5l-Gtx" secondAttribute="bottom" constant="25" id="VE7-fd-hVp"/>
@@ -129,7 +133,9 @@
                             <constraint firstAttribute="trailing" secondItem="1Ih-8j-bDw" secondAttribute="trailing" constant="-50" id="bKS-dT-dbw"/>
                             <constraint firstItem="vOT-5l-Gtx" firstAttribute="top" secondItem="9a7-vZ-H4z" secondAttribute="bottom" constant="6" id="fN6-q8-LXt"/>
                             <constraint firstAttribute="trailing" secondItem="vOT-5l-Gtx" secondAttribute="trailing" constant="20" id="fUc-Zg-XjT"/>
-                            <constraint firstItem="XZ7-kw-4RI" firstAttribute="leading" secondItem="hyo-sr-m2s" secondAttribute="leading" constant="20" id="nCd-O7-tZ7"/>
+                            <constraint firstItem="XZ7-kw-4RI" firstAttribute="leading" secondItem="hyo-sr-m2s" secondAttribute="leading" constant="20" id="nCd-O7-tZ7">
+                                <variation key="heightClass=regular-widthClass=regular" constant="40"/>
+                            </constraint>
                             <constraint firstItem="T5Z-Pd-F6u" firstAttribute="centerY" secondItem="vOT-5l-Gtx" secondAttribute="centerY" id="ocb-tc-C4a"/>
                             <constraint firstItem="89n-Kh-RwR" firstAttribute="leading" secondItem="HtM-b0-y2P" secondAttribute="trailing" constant="40" id="pYd-5U-0q9"/>
                             <constraint firstItem="14p-LQ-BYU" firstAttribute="top" secondItem="1Ih-8j-bDw" secondAttribute="bottom" constant="-50" id="pgg-p9-Yzs"/>
