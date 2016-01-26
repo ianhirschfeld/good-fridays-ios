@@ -40,13 +40,13 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3:42" textAlignment="justified" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JJM-6p-YJ9">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3:42" textAlignment="right" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JJM-6p-YJ9">
                                 <rect key="frame" x="551" y="748" width="29" height="19"/>
                                 <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="14"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1:51" textAlignment="justified" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9a7-vZ-H4z">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1:51" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9a7-vZ-H4z">
                                 <rect key="frame" x="20" y="748" width="30" height="19"/>
                                 <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="14"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
@@ -149,6 +149,8 @@
                         <outlet property="playButton" destination="89n-Kh-RwR" id="mTl-PF-n1n"/>
                         <outlet property="previousButton" destination="HtM-b0-y2P" id="DMA-Iy-S9H"/>
                         <outlet property="trackArtImageView" destination="XZ7-kw-4RI" id="X1Q-D5-r3o"/>
+                        <outlet property="trackArtImageViewLeadingConstraint" destination="nCd-O7-tZ7" id="SaM-cB-eNh"/>
+                        <outlet property="trackArtImageViewTrailingConstraint" destination="9uj-zU-XLE" id="7nB-AB-Gur"/>
                         <outlet property="trackBackgroundArtImageView" destination="1Ih-8j-bDw" id="udc-ey-hN6"/>
                         <outlet property="trackDurationLabel" destination="JJM-6p-YJ9" id="Tch-Sv-1Pd"/>
                         <outlet property="trackProgressLabel" destination="9a7-vZ-H4z" id="Udy-gU-gYg"/>

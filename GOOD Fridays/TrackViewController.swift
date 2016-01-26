@@ -25,6 +25,8 @@ class TrackViewController: UIViewController {
   @IBOutlet weak var trackTimelineScrubberView: UIView!
   @IBOutlet weak var trackTitleLabel: UILabel!
 
+  @IBOutlet weak var trackArtImageViewLeadingConstraint: NSLayoutConstraint!
+  @IBOutlet weak var trackArtImageViewTrailingConstraint: NSLayoutConstraint!
   @IBOutlet weak var trackTimelineProgressTrailingConstraint: NSLayoutConstraint!
 
   weak var delegate: MainPageViewController!
@@ -94,11 +96,12 @@ class TrackViewController: UIViewController {
     let playerItem = AVPlayerItem(URL: trackUrl)
     player = AVPlayer(playerItem: playerItem)
     trackProgress = player.currentTime()
-    NSNotificationCenter.defaultCenter().addObserver(self, selector: "playerFinished:", name: AVPlayerItemDidPlayToEndTimeNotification, object: playerItem)
 
     let timelinePanGesture = UIPanGestureRecognizer(target: self, action: "timelinePan:")
     timelinePanGesture.maximumNumberOfTouches = 1
     trackTimelineScrubberView.addGestureRecognizer(timelinePanGesture)
+
+    NSNotificationCenter.defaultCenter().addObserver(self, selector: "playerFinished:", name: AVPlayerItemDidPlayToEndTimeNotification, object: playerItem)
   }
 
   override func viewDidDisappear(animated: Bool) {
@@ -106,6 +109,20 @@ class TrackViewController: UIViewController {
 
     if isPlaying {
       playButtonTapped(playButton)
+    }
+  }
+
+  override func viewDidLayoutSubviews() {
+    super.viewDidLayoutSubviews()
+
+    if view.frame.width >= view.frame.height {
+      let targetHeight = view.frame.height / 2
+      let targetPadding = (view.frame.width - targetHeight) / 2
+      trackArtImageViewLeadingConstraint.constant = targetPadding
+      trackArtImageViewTrailingConstraint.constant = targetPadding
+    } else {
+      trackArtImageViewLeadingConstraint.constant = 20
+      trackArtImageViewTrailingConstraint.constant = 20
     }
   }
 
