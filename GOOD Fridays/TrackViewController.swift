@@ -95,6 +95,14 @@ class TrackViewController: UIViewController {
     trackProgress = player.currentTime()
   }
 
+  override func viewDidDisappear(animated: Bool) {
+    super.viewDidDisappear(animated)
+
+    if isPlaying {
+      playButtonTapped(playButton)
+    }
+  }
+
   // MARK: Player Controls
   @IBAction func playButtonTapped(sender: UIButton) {
     if isPlaying {
