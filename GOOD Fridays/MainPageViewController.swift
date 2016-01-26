@@ -48,6 +48,20 @@ class MainPageViewController: UIPageViewController {
     return trackViewController
   }
 
+  func goToNextPage() {
+    guard let currentViewController = viewControllers?[0] as? TrackViewController else { return }
+    guard let index = data.arrayValue.indexOf({ $0["id"].numberValue == currentViewController.trackData["id"].numberValue }) else { return }
+    guard let viewController = viewControllerAtIndex(index + 1) else { return }
+    setViewControllers([viewController], direction: .Forward, animated: true, completion: nil)
+  }
+
+  func goToPreviousPage() {
+    guard let currentViewController = viewControllers?[0] as? TrackViewController else { return }
+    guard let index = data.arrayValue.indexOf({ $0["id"].numberValue == currentViewController.trackData["id"].numberValue }) else { return }
+    guard let viewController = viewControllerAtIndex(index - 1) else { return }
+    setViewControllers([viewController], direction: .Reverse, animated: true, completion: nil)
+  }
+
 }
 
 extension MainPageViewController: UIPageViewControllerDelegate {}

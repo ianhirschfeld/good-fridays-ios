@@ -140,9 +140,11 @@ class TrackViewController: UIViewController {
   }
 
   @IBAction func nextButtonTapped(sender: UIButton) {
+    delegate.goToNextPage()
   }
 
   @IBAction func previousButtonTapper(sender: UIButton) {
+    delegate.goToPreviousPage()
   }
 
 }

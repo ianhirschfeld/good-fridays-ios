@@ -35,13 +35,13 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Track Title" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YzF-xi-geS">
-                                <rect key="frame" x="50" y="620" width="500" height="27.5"/>
+                                <rect key="frame" x="50" y="620" width="500" height="28"/>
                                 <fontDescription key="fontDescription" name="AvenirNext-Heavy" family="Avenir Next" pointSize="20"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3:42" textAlignment="justified" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JJM-6p-YJ9">
-                                <rect key="frame" x="550" y="747" width="29.5" height="19.5"/>
+                                <rect key="frame" x="550" y="747" width="30" height="20"/>
                                 <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="14"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -64,7 +64,7 @@
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1:51" textAlignment="justified" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9a7-vZ-H4z">
-                                <rect key="frame" x="20" y="748" width="29.5" height="19.5"/>
+                                <rect key="frame" x="20" y="748" width="30" height="20"/>
                                 <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="14"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -90,7 +90,7 @@
                                 <inset key="contentEdgeInsets" minX="15" minY="15" maxX="15" maxY="15"/>
                                 <state key="normal" image="next"/>
                                 <connections>
-                                    <action selector="previousButtonTapper:" destination="Bfi-ez-Idg" eventType="touchUpInside" id="Sy1-FP-8cu"/>
+                                    <action selector="nextButtonTapped:" destination="Bfi-ez-Idg" eventType="touchUpInside" id="n1O-GR-BWX"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HtM-b0-y2P">
@@ -102,7 +102,7 @@
                                 <inset key="contentEdgeInsets" minX="15" minY="15" maxX="15" maxY="15"/>
                                 <state key="normal" image="next"/>
                                 <connections>
-                                    <action selector="nextButtonTapped:" destination="Bfi-ez-Idg" eventType="touchUpInside" id="Wd9-OB-bqq"/>
+                                    <action selector="previousButtonTapper:" destination="Bfi-ez-Idg" eventType="touchUpInside" id="F3i-kY-vlM"/>
                                 </connections>
                             </button>
                         </subviews>
