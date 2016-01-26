@@ -226,6 +226,7 @@
 				TargetAttributes = {
 					653057571C4F77240067A1A3 = {
 						CreatedOnToolsVersion = 7.2;
+						DevelopmentTeam = 2B64D32Y57;
 					};
 					6530576B1C4F77250067A1A3 = {
 						CreatedOnToolsVersion = 7.2;
@@ -483,10 +484,11 @@
 			baseConfigurationReference = E94B1FFA5CAD6724FADA318E /* Pods-GOOD Fridays.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = "GOOD Fridays/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.thesoapcollective.GOOD-Fridays";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.ianhirschfeld.GOOD-Fridays";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -496,10 +498,11 @@
 			baseConfigurationReference = BFF91D94D137947A6F5E2F45 /* Pods-GOOD Fridays.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = "GOOD Fridays/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.thesoapcollective.GOOD-Fridays";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.ianhirschfeld.GOOD-Fridays";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
@@ -510,7 +513,7 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				INFOPLIST_FILE = "GOOD FridaysTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.thesoapcollective.GOOD-FridaysTests";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.ianhirschfeld.GOOD-Fridays";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/GOOD Fridays.app/GOOD Fridays";
 			};
@@ -522,7 +525,7 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				INFOPLIST_FILE = "GOOD FridaysTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.thesoapcollective.GOOD-FridaysTests";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.ianhirschfeld.GOOD-Fridays";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/GOOD Fridays.app/GOOD Fridays";
 			};
@@ -533,7 +536,7 @@
 			buildSettings = {
 				INFOPLIST_FILE = "GOOD FridaysUITests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.thesoapcollective.GOOD-FridaysUITests";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.ianhirschfeld.GOOD-Fridays";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_TARGET_NAME = "GOOD Fridays";
 				USES_XCTRUNNER = YES;
@@ -545,7 +548,7 @@
 			buildSettings = {
 				INFOPLIST_FILE = "GOOD FridaysUITests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.thesoapcollective.GOOD-FridaysUITests";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.ianhirschfeld.GOOD-Fridays";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_TARGET_NAME = "GOOD Fridays";
 				USES_XCTRUNNER = YES;
