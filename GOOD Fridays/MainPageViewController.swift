@@ -20,7 +20,10 @@ class MainPageViewController: UIPageViewController {
     delegate = self
     dataSource = self
 
-    Alamofire.request(.GET, "http://localhost:5000/tracks.json").validate().responseJSON { response in
+    let env = NSProcessInfo.processInfo().environment
+    let baseUrl = env["API_BASE_URL"] != nil ? env["API_BASE_URL"]! : "https://good-fridays.herokuapp.com"
+    print("Using: \(baseUrl)")
+    Alamofire.request(.GET, "\(baseUrl)/tracks.json").validate().responseJSON { response in
       switch response.result {
       case .Success:
         if let value = response.result.value {
