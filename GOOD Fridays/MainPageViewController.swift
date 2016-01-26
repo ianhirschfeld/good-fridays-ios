@@ -28,7 +28,6 @@ class MainPageViewController: UIPageViewController {
       case .Success:
         if let value = response.result.value {
           self.data = JSON(value)
-          print(self.data)
           self.reloadData()
         }
       case .Failure(let error):
