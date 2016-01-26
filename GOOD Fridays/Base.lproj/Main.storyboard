@@ -46,6 +46,12 @@
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1:51" textAlignment="justified" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9a7-vZ-H4z">
+                                <rect key="frame" x="20" y="747" width="30" height="20"/>
+                                <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="14"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vOT-5l-Gtx">
                                 <rect key="frame" x="20" y="773" width="560" height="2"/>
                                 <subviews>
@@ -63,12 +69,12 @@
                                     <constraint firstAttribute="trailing" secondItem="sAf-Hj-yIN" secondAttribute="trailing" constant="280" id="zIN-HB-mWr"/>
                                 </constraints>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1:51" textAlignment="justified" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9a7-vZ-H4z">
-                                <rect key="frame" x="20" y="748" width="30" height="20"/>
-                                <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="14"/>
-                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="T5Z-Pd-F6u">
+                                <rect key="frame" x="20" y="754" width="560" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="Qyc-sf-48h"/>
+                                </constraints>
+                            </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="89n-Kh-RwR">
                                 <rect key="frame" x="250" y="623" width="100" height="100"/>
                                 <constraints>
@@ -115,6 +121,7 @@
                             <constraint firstItem="vOT-5l-Gtx" firstAttribute="top" secondItem="JJM-6p-YJ9" secondAttribute="bottom" constant="6" id="7xY-Cs-DDR"/>
                             <constraint firstItem="89n-Kh-RwR" firstAttribute="centerX" secondItem="hyo-sr-m2s" secondAttribute="centerX" id="96i-gx-2Bz"/>
                             <constraint firstAttribute="trailing" secondItem="XZ7-kw-4RI" secondAttribute="trailing" constant="20" id="9uj-zU-XLE"/>
+                            <constraint firstItem="T5Z-Pd-F6u" firstAttribute="leading" secondItem="vOT-5l-Gtx" secondAttribute="leading" id="Ego-GD-iCK"/>
                             <constraint firstAttribute="trailing" secondItem="YzF-xi-geS" secondAttribute="trailing" constant="50" id="Kl5-in-9LO"/>
                             <constraint firstItem="1Ih-8j-bDw" firstAttribute="leading" secondItem="hyo-sr-m2s" secondAttribute="leading" constant="-50" id="OJh-0V-6Q4"/>
                             <constraint firstItem="14p-LQ-BYU" firstAttribute="top" secondItem="vOT-5l-Gtx" secondAttribute="bottom" constant="25" id="VE7-fd-hVp"/>
@@ -122,7 +129,9 @@
                             <constraint firstAttribute="trailing" secondItem="1Ih-8j-bDw" secondAttribute="trailing" constant="-50" id="bKS-dT-dbw"/>
                             <constraint firstItem="vOT-5l-Gtx" firstAttribute="top" secondItem="9a7-vZ-H4z" secondAttribute="bottom" constant="6" id="fN6-q8-LXt"/>
                             <constraint firstAttribute="trailing" secondItem="vOT-5l-Gtx" secondAttribute="trailing" constant="20" id="fUc-Zg-XjT"/>
+                            <constraint firstItem="T5Z-Pd-F6u" firstAttribute="width" secondItem="vOT-5l-Gtx" secondAttribute="width" id="ily-fT-6SJ"/>
                             <constraint firstItem="XZ7-kw-4RI" firstAttribute="leading" secondItem="hyo-sr-m2s" secondAttribute="leading" constant="20" id="nCd-O7-tZ7"/>
+                            <constraint firstItem="T5Z-Pd-F6u" firstAttribute="centerY" secondItem="vOT-5l-Gtx" secondAttribute="centerY" id="ocb-tc-C4a"/>
                             <constraint firstItem="89n-Kh-RwR" firstAttribute="leading" secondItem="HtM-b0-y2P" secondAttribute="trailing" constant="40" id="pYd-5U-0q9"/>
                             <constraint firstItem="14p-LQ-BYU" firstAttribute="top" secondItem="1Ih-8j-bDw" secondAttribute="bottom" constant="-50" id="pgg-p9-Yzs"/>
                             <constraint firstItem="JJM-6p-YJ9" firstAttribute="trailing" secondItem="vOT-5l-Gtx" secondAttribute="trailing" id="rfd-CE-Dgb"/>
@@ -145,6 +154,7 @@
                         <outlet property="trackProgressLabel" destination="9a7-vZ-H4z" id="Udy-gU-gYg"/>
                         <outlet property="trackTimelineProgressTrailingConstraint" destination="zIN-HB-mWr" id="uDK-YR-1tj"/>
                         <outlet property="trackTimelineProgressView" destination="sAf-Hj-yIN" id="SI2-y3-ehC"/>
+                        <outlet property="trackTimelineScrubberView" destination="T5Z-Pd-F6u" id="URw-tG-Prq"/>
                         <outlet property="trackTimelineView" destination="vOT-5l-Gtx" id="tqw-s0-UMe"/>
                         <outlet property="trackTitleLabel" destination="YzF-xi-geS" id="htl-uw-Ctt"/>
                     </connections>

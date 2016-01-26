@@ -22,12 +22,14 @@ class TrackViewController: UIViewController {
   @IBOutlet weak var trackProgressLabel: UILabel!
   @IBOutlet weak var trackTimelineView: UIView!
   @IBOutlet weak var trackTimelineProgressView: UIView!
+  @IBOutlet weak var trackTimelineScrubberView: UIView!
   @IBOutlet weak var trackTitleLabel: UILabel!
 
   @IBOutlet weak var trackTimelineProgressTrailingConstraint: NSLayoutConstraint!
 
   weak var delegate: MainPageViewController!
   var isPlaying = false
+  var wasPlaying = false
   var player: AVPlayer!
   var trackData: JSON!
   var trackProgress: CMTime!
@@ -92,6 +94,10 @@ class TrackViewController: UIViewController {
     let playerItem = AVPlayerItem(URL: trackUrl)
     player = AVPlayer(playerItem: playerItem)
     trackProgress = player.currentTime()
+
+    let timelinePanGesture = UIPanGestureRecognizer(target: self, action: "timelinePan:")
+    timelinePanGesture.maximumNumberOfTouches = 1
+    trackTimelineScrubberView.addGestureRecognizer(timelinePanGesture)
   }
 
   override func viewDidDisappear(animated: Bool) {
@@ -145,6 +151,52 @@ class TrackViewController: UIViewController {
 
   @IBAction func previousButtonTapper(sender: UIButton) {
     delegate.goToPreviousPage()
+  }
+
+  func timelinePan(gesture: UIPanGestureRecognizer) {
+    let translation = gesture.translationInView(view)
+    let dx = translation.x
+    gesture.setTranslation(CGPointZero, inView: view)
+
+    switch gesture.state {
+    case .Began:
+      if isPlaying {
+        wasPlaying = true
+        player.pause()
+      }
+      break
+
+    case .Changed:
+      let newConstant = trackTimelineProgressTrailingConstraint.constant - dx
+      if newConstant <= 0 {
+        trackTimelineProgressTrailingConstraint.constant = 0
+      } else if newConstant >= trackTimelineView.frame.width {
+        trackTimelineProgressTrailingConstraint.constant = trackTimelineView.frame.width
+      } else {
+        trackTimelineProgressTrailingConstraint.constant = newConstant
+      }
+      let percent = Double((trackTimelineView.frame.width - trackTimelineProgressTrailingConstraint.constant) / trackTimelineView.frame.width)
+      let seconds = (self.trackData["duration"].doubleValue / 1000) * percent
+      trackProgressLabel.text = timestamp(seconds)
+      break
+
+    case .Ended:
+      let percent = Double((trackTimelineView.frame.width - trackTimelineProgressTrailingConstraint.constant) / trackTimelineView.frame.width)
+      let seconds = (self.trackData["duration"].doubleValue / 1000) * percent
+      trackProgressLabel.text = timestamp(seconds)
+      let time = CMTime(seconds: seconds, preferredTimescale: player.currentTime().timescale)
+      trackProgress = time
+      player.seekToTime(time)
+      if wasPlaying {
+        isPlaying = true
+        player.play()
+      }
+      wasPlaying = false
+      break
+
+    default:
+      break
+    }
   }
 
 }
