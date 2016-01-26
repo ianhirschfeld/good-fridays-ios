@@ -150,7 +150,17 @@ class TrackViewController: UIViewController {
   }
 
   @IBAction func previousButtonTapper(sender: UIButton) {
-    delegate.goToPreviousPage()
+    if player.currentTime().seconds >= 10 {
+      let time = CMTime(seconds: 0, preferredTimescale: player.currentTime().timescale)
+      player.seekToTime(time)
+      if !isPlaying {
+        trackProgress = time
+        trackProgressLabel.text = timestamp(0)
+        trackTimelineProgressTrailingConstraint.constant = trackTimelineView.frame.width
+      }
+    } else {
+      delegate.goToPreviousPage()
+    }
   }
 
   func timelinePan(gesture: UIPanGestureRecognizer) {
