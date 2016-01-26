@@ -13,6 +13,8 @@ import SwiftyJSON
 
 class TrackViewController: UIViewController {
 
+  @IBOutlet weak var actionView: UIView!
+  @IBOutlet weak var hitboxView: UIView!
   @IBOutlet weak var nextButton: UIButton!
   @IBOutlet weak var playButton: UIButton!
   @IBOutlet weak var previousButton: UIButton!
@@ -97,7 +99,10 @@ class TrackViewController: UIViewController {
     player = AVPlayer(playerItem: playerItem)
     trackProgress = player.currentTime()
 
-    let timelinePanGesture = UIPanGestureRecognizer(target: self, action: "timelinePan:")
+    let hitboxTapGesture = UITapGestureRecognizer(target: self, action: "hitboxTapped:")
+    hitboxView.addGestureRecognizer(hitboxTapGesture)
+
+    let timelinePanGesture = UIPanGestureRecognizer(target: self, action: "timelinePanned:")
     timelinePanGesture.maximumNumberOfTouches = 1
     trackTimelineScrubberView.addGestureRecognizer(timelinePanGesture)
 
@@ -162,13 +167,13 @@ class TrackViewController: UIViewController {
         trackTimeObserver = nil
       }
       trackProgress = player.currentTime()
-      playButton.setImage(UIImage(named: "play")?.imageWithRenderingMode(.AlwaysTemplate), forState: .Normal)
+//      playButton.setImage(UIImage(named: "play")?.imageWithRenderingMode(.AlwaysTemplate), forState: .Normal)
       playButton.contentEdgeInsets = UIEdgeInsets(top: 30, left: 33, bottom: 30, right: 27)
     } else {
       isPlaying = true
       player.seekToTime(trackProgress, completionHandler: { (completed) -> Void in
         self.player.play()
-        self.playButton.setImage(UIImage(named: "pause")?.imageWithRenderingMode(.AlwaysTemplate), forState: .Normal)
+//        self.playButton.setImage(UIImage(named: "pause")?.imageWithRenderingMode(.AlwaysTemplate), forState: .Normal)
         self.playButton.contentEdgeInsets = UIEdgeInsets(top: 30, left: 30, bottom: 30, right: 30)
       })
       trackTimeObserver = player.addPeriodicTimeObserverForInterval(CMTimeMake(1, 10), queue: dispatch_get_main_queue(), usingBlock: { (time) -> Void in
@@ -199,7 +204,21 @@ class TrackViewController: UIViewController {
     }
   }
 
-  func timelinePan(gesture: UIPanGestureRecognizer) {
+  func hitboxTapped(gesture: UITapGestureRecognizer) {
+    playButtonTapped(playButton)
+
+    if isPlaying {
+      UIView.animateWithDuration(0.2, animations: { () -> Void in
+        self.actionView.alpha = 0
+      })
+    } else {
+      UIView.animateWithDuration(0.2, animations: { () -> Void in
+        self.actionView.alpha = 1
+      })
+    }
+  }
+
+  func timelinePanned(gesture: UIPanGestureRecognizer) {
     let translation = gesture.translationInView(view)
     let dx = translation.x
     gesture.setTranslation(CGPointZero, inView: view)
