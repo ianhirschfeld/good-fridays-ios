@@ -48,9 +48,8 @@ class TrackViewController: UIViewController {
       self.trackArtImageView.layer.shadowRadius = 10
     }
     trackBackgroundArtImageView.af_setImageWithURL(artworkUrl, placeholderImage: nil, filter: backgroundArtworkFilter, imageTransition: .CrossDissolve(0.3))
-    let seconds: Int = trackData["duration"].intValue / 1000
-    let minutes: Int = seconds / 60
-    trackDurationLabel.text = "\(minutes):\(seconds - minutes * 60)"
+    let seconds = trackData["duration"].doubleValue / 1000
+    trackDurationLabel.text = timestamp(seconds)
     trackProgressLabel.text = "0:00"
     trackTitleLabel.text = trackData["title"].stringValue
 
@@ -103,6 +102,14 @@ class TrackViewController: UIViewController {
     }
   }
 
+  func timestamp(seconds: Double) -> String {
+    let minutes = Int(floor(seconds / 60))
+    let seconds = Int(floor(seconds - Double(minutes * 60)))
+    var timestamp = "\(minutes):"
+    timestamp += seconds >= 10 ? "\(seconds)" : "0\(seconds)"
+    return timestamp
+  }
+
   // MARK: Player Controls
   @IBAction func playButtonTapped(sender: UIButton) {
     if isPlaying {
@@ -123,8 +130,7 @@ class TrackViewController: UIViewController {
         self.playButton.contentEdgeInsets = UIEdgeInsets(top: 30, left: 30, bottom: 30, right: 30)
       })
       trackTimeObserver = player.addPeriodicTimeObserverForInterval(CMTimeMake(1, 10), queue: dispatch_get_main_queue(), usingBlock: { (time) -> Void in
-        let minutes: Int = Int(self.player.currentTime().seconds) / 60
-        self.trackProgressLabel.text = "\(minutes):\(Int(self.player.currentTime().seconds) - minutes * 60)"
+        self.trackProgressLabel.text = self.timestamp(self.player.currentTime().seconds)
         let percent = CGFloat(self.player.currentTime().seconds / (self.trackData["duration"].doubleValue / 1000))
         let threshold = self.view.frame.width - 40
         self.trackTimelineProgressTrailingConstraint.constant = threshold - threshold * percent
