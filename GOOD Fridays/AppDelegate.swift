@@ -6,6 +6,8 @@
 //  Copyright © 2016 The Soap Collective. All rights reserved.
 //
 
+import Fabric
+import Crashlytics
 import UIKit
 
 @UIApplicationMain
@@ -15,6 +17,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
   func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+    Fabric.with([Crashlytics.self()])
+
     window?.backgroundColor = UIColor(red: 39.0/255.0, green: 39.0/255.0, blue: 39.0/255.0, alpha: 1)
     application.statusBarStyle = .LightContent
 
