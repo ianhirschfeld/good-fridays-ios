@@ -8,6 +8,7 @@
 
 import Alamofire
 import AlamofireImage
+import AVFoundation
 import UIKit
 import SwiftyJSON
 
@@ -21,9 +22,34 @@ class TrackCollectionViewController: UIViewController {
   let CellMargin: CGFloat = 15
   let CollectionMargin: CGFloat = 20
 
+  var shouldDownloadData = false
+
+  override func viewDidLoad() {
+    super.viewDidLoad()
+
+    Global.tracks = [JSON]()
+    Global.playerItems = [AVPlayerItem]()
+    shouldDownloadData = true
+  }
+
   override func viewDidAppear(animated: Bool) {
     super.viewDidAppear(animated)
 
+    if shouldDownloadData {
+      shouldDownloadData = false
+      downloadData()
+    }
+  }
+
+  override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    if segue.identifier == "TrackCollectionToTrackPage" {
+      let indexPath = sender as! NSIndexPath
+      let destinationViewController = segue.destinationViewController as! TrackPageViewController
+      destinationViewController.startingIndex = indexPath.row
+    }
+  }
+
+  func downloadData() {
     let env = NSProcessInfo.processInfo().environment
     let baseUrl = env["API_BASE_URL"] != nil ? env["API_BASE_URL"]! : "https://good-fridays.herokuapp.com"
 
@@ -34,19 +60,16 @@ class TrackCollectionViewController: UIViewController {
       case .Success:
         if let value = response.result.value {
           Global.tracks = JSON(value).arrayValue
+          for track in Global.tracks {
+            let trackUrl = NSURL(string: track["stream_url"].stringValue)!
+            let playerItem = AVPlayerItem(URL: trackUrl)
+            Global.playerItems.append(playerItem)
+          }
           self.showCollectionView()
         }
       case .Failure(let error):
         print(error)
       }
-    }
-  }
-
-  override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-    if segue.identifier == "TrackCollectionToTrackPage" {
-      let indexPath = sender as! NSIndexPath
-      let destinationViewController = segue.destinationViewController as! TrackPageViewController
-      destinationViewController.startingIndex = indexPath.row
     }
   }
 

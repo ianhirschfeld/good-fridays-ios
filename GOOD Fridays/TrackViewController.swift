@@ -32,22 +32,19 @@ class TrackViewController: UIViewController {
   @IBOutlet weak var trackTimelineProgressTrailingConstraint: NSLayoutConstraint!
 
   weak var delegate: TrackPageViewController!
-  var isPlaying = false
-  var wasPlaying = false
-  var shouldAutoPlay = false
-  var player: AVPlayer!
-  var trackData: JSON!
-  var trackProgress: CMTime!
-  var trackTimeObserver: AnyObject?
+  var playerItem: AVPlayerItem!
+  var playerTimeObserver: AnyObject?
+  var shouldContinuePlaying = false
+  var track: JSON!
 
   var index: Int {
-    return Global.tracks.indexOf({ $0["id"].numberValue == self.trackData["id"].numberValue })!
+    return Global.tracks.indexOf({ $0["id"].numberValue == self.track["id"].numberValue })!
   }
 
   override func viewDidLoad() {
     super.viewDidLoad()
 
-    let artworkUrl = NSURL(string: trackData["artwork_url"].stringValue)!
+    let artworkUrl = NSURL(string: track["artwork_url"].stringValue)!
     let backgroundArtworkFilter = BlurFilter(blurRadius: 20)
     trackArtImageView.af_setImageWithURL(artworkUrl, placeholderImage: nil, filter: nil, imageTransition: .CrossDissolve(0.3)) { (response) -> Void in
       self.trackArtImageView.layer.shadowColor = UIColor(red: 18.0/255.0, green: 18.0/255.0, blue: 18.0/255.0, alpha: 1).CGColor
@@ -55,10 +52,10 @@ class TrackViewController: UIViewController {
       self.trackArtImageView.layer.shadowRadius = 10
     }
     trackBackgroundArtImageView.af_setImageWithURL(artworkUrl, placeholderImage: nil, filter: backgroundArtworkFilter, imageTransition: .CrossDissolve(0.3))
-    let seconds = trackData["duration"].doubleValue / 1000
+    let seconds = track["duration"].doubleValue / 1000
     trackDurationLabel.text = timestamp(seconds)
     trackProgressLabel.text = "0:00"
-    trackTitleLabel.text = trackData["title"].stringValue
+    trackTitleLabel.text = track["title"].stringValue
 
     trackTimelineView.layer.cornerRadius = trackTimelineView.bounds.height / 2
 
@@ -95,35 +92,44 @@ class TrackViewController: UIViewController {
     trackTimelineProgressTrailingConstraint.constant = view.frame.width - 40
     view.layoutIfNeeded()
 
-    let trackUrl = NSURL(string: trackData["stream_url"].stringValue)!
-    let playerItem = AVPlayerItem(URL: trackUrl)
-    player = AVPlayer(playerItem: playerItem)
-    trackProgress = player.currentTime()
-
     let hitboxTapGesture = UITapGestureRecognizer(target: self, action: "hitboxTapped:")
     hitboxView.addGestureRecognizer(hitboxTapGesture)
 
     let timelinePanGesture = UIPanGestureRecognizer(target: self, action: "timelinePanned:")
     timelinePanGesture.maximumNumberOfTouches = 1
     trackTimelineScrubberView.addGestureRecognizer(timelinePanGesture)
-
-    NSNotificationCenter.defaultCenter().addObserver(self, selector: "playerFinished:", name: AVPlayerItemDidPlayToEndTimeNotification, object: playerItem)
   }
 
   override func viewDidAppear(animated: Bool) {
     super.viewDidAppear(animated)
 
-    if shouldAutoPlay {
-      shouldAutoPlay = false
-      playButtonTapped(playButton)
+    playerItem = Global.playerItems[index]
+    Global.player.replaceCurrentItemWithPlayerItem(playerItem)
+
+    if Global.shouldAutoPlay || Global.isPlaying {
+      Global.shouldAutoPlay = false
+      playTrack()
+    } else {
+      setTimelineAttributes()
     }
+
+    NSNotificationCenter.defaultCenter().addObserver(self, selector: "playerItemFinished:", name: AVPlayerItemDidPlayToEndTimeNotification, object: playerItem)
   }
 
   override func viewDidDisappear(animated: Bool) {
     super.viewDidDisappear(animated)
 
-    if isPlaying {
-      playButtonTapped(playButton)
+    if actionView.alpha == 1 {
+      actionView.alpha = 0
+    }
+  }
+
+  override func viewWillDisappear(animated: Bool) {
+    super.viewWillDisappear(animated)
+
+    if let observer = playerTimeObserver {
+      Global.player.removeTimeObserver(observer)
+      playerTimeObserver = nil
     }
   }
 
@@ -144,60 +150,14 @@ class TrackViewController: UIViewController {
 
   deinit {
     NSNotificationCenter.defaultCenter().removeObserver(self)
-    if let observer = trackTimeObserver {
-      player.removeTimeObserver(observer)
-      trackTimeObserver = nil
+    if let observer = playerTimeObserver {
+      Global.player.removeTimeObserver(observer)
+      playerTimeObserver = nil
     }
   }
 
-  func timestamp(seconds: Double) -> String {
-    let minutes = Int(floor(seconds / 60))
-    let seconds = Int(floor(seconds - Double(minutes * 60)))
-    var timestamp = "\(minutes):"
-    timestamp += seconds >= 10 ? "\(seconds)" : "0\(seconds)"
-    return timestamp
-  }
-
-  func playerFinished(notification: NSNotification) {
-    playButtonTapped(playButton)
-    let time = CMTime(seconds: 0, preferredTimescale: player.currentTime().timescale)
-    player.seekToTime(time)
-    trackProgress = time
-    trackProgressLabel.text = timestamp(0)
-    trackTimelineProgressTrailingConstraint.constant = trackTimelineView.frame.width
-  }
-
-  // MARK: Player Controls
   @IBAction func playButtonTapped(sender: UIButton) {
-    if isPlaying {
-      isPlaying = false
-      player.pause()
-      if let observer = trackTimeObserver {
-        player.removeTimeObserver(observer)
-        trackTimeObserver = nil
-      }
-      trackProgress = player.currentTime()
-//      playButton.setImage(UIImage(named: "play")?.imageWithRenderingMode(.AlwaysTemplate), forState: .Normal)
-      playButton.contentEdgeInsets = UIEdgeInsets(top: 30, left: 33, bottom: 30, right: 27)
-    } else {
-      isPlaying = true
-      if trackProgress.seconds == 0 {
-        player.play()
-      } else {
-        player.seekToTime(trackProgress, completionHandler: { (completed) -> Void in
-          self.player.play()
-//          self.playButton.setImage(UIImage(named: "pause")?.imageWithRenderingMode(.AlwaysTemplate), forState: .Normal)
-          self.playButton.contentEdgeInsets = UIEdgeInsets(top: 30, left: 30, bottom: 30, right: 30)
-        })
-      }
-      trackTimeObserver = player.addPeriodicTimeObserverForInterval(CMTimeMake(1, 10), queue: dispatch_get_main_queue(), usingBlock: { (time) -> Void in
-        self.trackProgressLabel.text = self.timestamp(self.player.currentTime().seconds)
-        let percent = CGFloat(self.player.currentTime().seconds / (self.trackData["duration"].doubleValue / 1000))
-        let threshold = self.view.frame.width - 40
-        self.trackTimelineProgressTrailingConstraint.constant = threshold - threshold * percent
-        self.view.layoutIfNeeded()
-      })
-    }
+    togglePlayTrack()
   }
 
   @IBAction func nextButtonTapped(sender: UIButton) {
@@ -205,11 +165,10 @@ class TrackViewController: UIViewController {
   }
 
   @IBAction func previousButtonTapper(sender: UIButton) {
-    if player.currentTime().seconds >= 10 {
-      let time = CMTime(seconds: 0, preferredTimescale: player.currentTime().timescale)
-      player.seekToTime(time)
-      if !isPlaying {
-        trackProgress = time
+    if playerItem.currentTime().seconds >= 10 {
+      let time = CMTime(seconds: 0, preferredTimescale: playerItem.currentTime().timescale)
+      Global.player.seekToTime(time)
+      if !Global.isPlaying {
         trackProgressLabel.text = timestamp(0)
         trackTimelineProgressTrailingConstraint.constant = trackTimelineView.frame.width
       }
@@ -218,18 +177,56 @@ class TrackViewController: UIViewController {
     }
   }
 
-  func hitboxTapped(gesture: UITapGestureRecognizer) {
-    playButtonTapped(playButton)
-
-    if isPlaying {
-      UIView.animateWithDuration(0.2, animations: { () -> Void in
-        self.actionView.alpha = 0
-      })
+  func playerItemFinished(notification: NSNotification) {
+    if index < Global.playerItems.count - 1 {
+      togglePlayTrack()
+      let time = CMTime(seconds: 0, preferredTimescale: playerItem.currentTime().timescale)
+      playerItem.seekToTime(time)
+      Global.shouldAutoPlay = true
+      delegate.goToNextPage()
     } else {
-      UIView.animateWithDuration(0.2, animations: { () -> Void in
-        self.actionView.alpha = 1
+      togglePlayTrack()
+      for item in Global.playerItems {
+        let time = CMTime(seconds: 0, preferredTimescale: item.currentTime().timescale)
+        item.seekToTime(time)
+      }
+      dismissViewControllerAnimated(true, completion: nil)
+    }
+  }
+
+  func playTrack() {
+    Global.isPlaying = true
+    if playerItem.currentTime().seconds == 0 {
+      Global.player.play()
+    } else {
+      Global.player.seekToTime(playerItem.currentTime(), completionHandler: { (completed) -> Void in
+        Global.player.play()
       })
     }
+    playerTimeObserver = Global.player.addPeriodicTimeObserverForInterval(CMTimeMake(1, 10), queue: dispatch_get_main_queue(), usingBlock: { [unowned self] (time) -> Void in
+      self.setTimelineAttributes()
+    })
+  }
+
+  func pauseTrack() {
+    Global.isPlaying = false
+    Global.player.pause()
+    if let observer = playerTimeObserver {
+      Global.player.removeTimeObserver(observer)
+      playerTimeObserver = nil
+    }
+  }
+
+  func togglePlayTrack() {
+    Global.isPlaying ? pauseTrack() : playTrack()
+  }
+
+  func hitboxTapped(gesture: UITapGestureRecognizer) {
+    togglePlayTrack()
+    let alpha: CGFloat = Global.isPlaying ? 0 : 1
+    UIView.animateWithDuration(0.2, animations: { () -> Void in
+      self.actionView.alpha = alpha
+    })
   }
 
   func timelinePanned(gesture: UIPanGestureRecognizer) {
@@ -239,9 +236,10 @@ class TrackViewController: UIViewController {
 
     switch gesture.state {
     case .Began:
-      if isPlaying {
-        wasPlaying = true
-        player.pause()
+      if Global.isPlaying {
+        Global.isPlaying = false
+        shouldContinuePlaying = true
+        Global.player.pause()
       }
       break
 
@@ -254,28 +252,47 @@ class TrackViewController: UIViewController {
       } else {
         trackTimelineProgressTrailingConstraint.constant = newConstant
       }
-      let percent = Double((trackTimelineView.frame.width - trackTimelineProgressTrailingConstraint.constant) / trackTimelineView.frame.width)
-      let seconds = (self.trackData["duration"].doubleValue / 1000) * percent
+      let seconds = scrubSeconds()
       trackProgressLabel.text = timestamp(seconds)
       break
 
     case .Ended:
-      let percent = Double((trackTimelineView.frame.width - trackTimelineProgressTrailingConstraint.constant) / trackTimelineView.frame.width)
-      let seconds = (self.trackData["duration"].doubleValue / 1000) * percent
+      let seconds = scrubSeconds()
       trackProgressLabel.text = timestamp(seconds)
-      let time = CMTime(seconds: seconds, preferredTimescale: player.currentTime().timescale)
-      trackProgress = time
-      player.seekToTime(time)
-      if wasPlaying {
-        isPlaying = true
-        player.play()
+      let time = CMTime(seconds: seconds, preferredTimescale: playerItem.currentTime().timescale)
+      Global.player.seekToTime(time)
+      if shouldContinuePlaying {
+        Global.isPlaying = true
+        Global.player.play()
       }
-      wasPlaying = false
+      shouldContinuePlaying = false
       break
 
     default:
       break
     }
+  }
+
+  func setTimelineAttributes() {
+    let seconds = playerItem.currentTime().seconds
+    let percent = CGFloat(seconds / (track["duration"].doubleValue / 1000))
+    let threshold = view.frame.width - 40
+    trackProgressLabel.text = timestamp(seconds)
+    trackTimelineProgressTrailingConstraint.constant = threshold - threshold * percent
+    view.layoutIfNeeded()
+  }
+
+  func scrubSeconds() -> Double {
+    let percent = Double((trackTimelineView.frame.width - trackTimelineProgressTrailingConstraint.constant) / trackTimelineView.frame.width)
+    return (self.track["duration"].doubleValue / 1000) * percent
+  }
+
+  func timestamp(seconds: Double) -> String {
+    let minutes = Int(floor(seconds / 60))
+    let seconds = Int(floor(seconds - Double(minutes * 60)))
+    var timestamp = "\(minutes):"
+    timestamp += seconds >= 10 ? "\(seconds)" : "0\(seconds)"
+    return timestamp
   }
 
 }
