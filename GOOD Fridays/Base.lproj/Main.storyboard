@@ -88,14 +88,14 @@
                                 </connections>
                             </collectionView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="N88-bs-ohd">
-                                <rect key="frame" x="0.0" y="255" width="600" height="90"/>
+                                <rect key="frame" x="0.0" y="243" width="600" height="115"/>
                                 <subviews>
                                     <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="efv-Q6-dWg">
-                                        <rect key="frame" x="281" y="53" width="37" height="37"/>
+                                        <rect key="frame" x="281" y="77.5" width="37" height="37"/>
                                     </activityIndicatorView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="DOPE TRACKS LOADING" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="paM-2m-jcD">
-                                        <rect key="frame" x="237" y="0.0" width="127" height="43"/>
-                                        <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="18"/>
+                                        <rect key="frame" x="215" y="0.0" width="170" height="57.5"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="24"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -105,7 +105,7 @@
                                     <constraint firstItem="paM-2m-jcD" firstAttribute="centerX" secondItem="N88-bs-ohd" secondAttribute="centerX" id="Od4-pN-3Up"/>
                                     <constraint firstItem="paM-2m-jcD" firstAttribute="top" secondItem="N88-bs-ohd" secondAttribute="top" id="bsL-5L-U6A"/>
                                     <constraint firstAttribute="bottom" secondItem="efv-Q6-dWg" secondAttribute="bottom" id="knu-na-BgU"/>
-                                    <constraint firstItem="efv-Q6-dWg" firstAttribute="top" secondItem="paM-2m-jcD" secondAttribute="bottom" constant="10" id="q6t-6m-GUe"/>
+                                    <constraint firstItem="efv-Q6-dWg" firstAttribute="top" secondItem="paM-2m-jcD" secondAttribute="bottom" constant="20" id="q6t-6m-GUe"/>
                                 </constraints>
                             </view>
                         </subviews>
