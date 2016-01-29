@@ -25,6 +25,10 @@ class TrackPageViewController: UIPageViewController {
       startingTrackViewController.shouldAutoPlay = true
       setViewControllers([startingTrackViewController], direction: .Reverse, animated: false, completion: nil)
     }
+
+    let swipeGesture = UISwipeGestureRecognizer(target: self, action: "viewSwiped:")
+    swipeGesture.direction = .Down
+    view.addGestureRecognizer(swipeGesture)
   }
 
   func viewControllerAtIndex(index: Int) -> TrackViewController? {
@@ -47,6 +51,10 @@ class TrackPageViewController: UIPageViewController {
     guard let index = Global.tracks.indexOf({ $0["id"].numberValue == currentViewController.trackData["id"].numberValue }) else { return }
     guard let viewController = viewControllerAtIndex(index - 1) else { return }
     setViewControllers([viewController], direction: .Reverse, animated: true, completion: nil)
+  }
+
+  func viewSwiped(gesture: UISwipeGestureRecognizer) {
+    dismissViewControllerAnimated(true, completion: nil)
   }
 
 }
