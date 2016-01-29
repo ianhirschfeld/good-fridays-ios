@@ -27,10 +27,15 @@ class TrackCollectionViewController: UIViewController {
   let CellMargin: CGFloat = 15
   let CollectionMargin: CGFloat = 20
 
+  var baseUrl: String!
   var shouldDownloadData = false
 
   override func viewDidLoad() {
     super.viewDidLoad()
+
+    let env = NSProcessInfo.processInfo().environment
+    baseUrl = env["API_BASE_URL"] != nil ? env["API_BASE_URL"]! : "https://good-fridays.herokuapp.com"
+    print("Using: \(baseUrl)")
 
     notificationImageView.layer.cornerRadius = 8
     notificationNoButton.layer.borderColor = UIColor(white: 1, alpha: 0.5).CGColor
@@ -51,6 +56,8 @@ class TrackCollectionViewController: UIViewController {
     if shouldDownloadData {
       shouldDownloadData = false
       downloadData()
+    } else {
+      reloadData()
     }
   }
 
@@ -80,11 +87,6 @@ class TrackCollectionViewController: UIViewController {
   }
 
   func downloadData() {
-    let env = NSProcessInfo.processInfo().environment
-    let baseUrl = env["API_BASE_URL"] != nil ? env["API_BASE_URL"]! : "https://good-fridays.herokuapp.com"
-
-    print("Using: \(baseUrl)")
-
     Alamofire.request(.GET, "\(baseUrl)/tracks.json").validate().responseJSON { [unowned self] response in
       switch response.result {
       case .Success:
@@ -96,6 +98,29 @@ class TrackCollectionViewController: UIViewController {
             Global.playerItems.append(playerItem)
           }
           self.startUp()
+        }
+      case .Failure(let error):
+        print(error)
+      }
+    }
+  }
+
+  func reloadData() {
+    Alamofire.request(.GET, "\(baseUrl)/tracks.json").validate().responseJSON { [unowned self] response in
+      switch response.result {
+      case .Success:
+        if let value = response.result.value {
+          if JSON(value).arrayValue.count != Global.tracks.count {
+            Global.player.replaceCurrentItemWithPlayerItem(nil)
+            Global.playerItems.removeAll()
+            Global.tracks = JSON(value).arrayValue
+            for track in Global.tracks {
+              let trackUrl = NSURL(string: track["stream_url"].stringValue)!
+              let playerItem = AVPlayerItem(URL: trackUrl)
+              Global.playerItems.append(playerItem)
+            }
+            self.collectionView.reloadData()
+          }
         }
       case .Failure(let error):
         print(error)
@@ -131,7 +156,6 @@ class TrackCollectionViewController: UIViewController {
   }
 
 }
-
 
 extension TrackCollectionViewController: UICollectionViewDelegate {}
 
