@@ -9,6 +9,7 @@
 import Alamofire
 import AlamofireImage
 import AVFoundation
+import Mixpanel
 import UIKit
 import SwiftyJSON
 
@@ -18,6 +19,10 @@ class TrackCollectionViewController: UIViewController {
   @IBOutlet weak var collectionView: UICollectionView!
   @IBOutlet weak var downloadingView: UIView!
   @IBOutlet weak var downloadingIndicatorView: UIActivityIndicatorView!
+  @IBOutlet weak var notificationContainerView: UIView!
+  @IBOutlet weak var notificationImageView: UIImageView!
+  @IBOutlet weak var notificationNoButton: UIButton!
+  @IBOutlet weak var notificationYesButton: UIButton!
 
   let CellMargin: CGFloat = 15
   let CollectionMargin: CGFloat = 20
@@ -26,6 +31,14 @@ class TrackCollectionViewController: UIViewController {
 
   override func viewDidLoad() {
     super.viewDidLoad()
+
+    notificationImageView.layer.cornerRadius = 8
+    notificationNoButton.layer.borderColor = UIColor(white: 1, alpha: 0.5).CGColor
+    notificationNoButton.layer.borderWidth = 1
+    notificationNoButton.layer.cornerRadius = 6
+    notificationYesButton.layer.borderColor = UIColor(white: 1, alpha: 0.5).CGColor
+    notificationYesButton.layer.borderWidth = 1
+    notificationYesButton.layer.cornerRadius = 6
 
     Global.tracks = [JSON]()
     Global.playerItems = [AVPlayerItem]()
@@ -49,6 +62,23 @@ class TrackCollectionViewController: UIViewController {
     }
   }
 
+  @IBAction func notificationsNoTapped(sender: UIButton) {
+    UIView.animateWithDuration(0.5, animations: { () -> Void in
+      self.notificationContainerView.alpha = 0
+    }) { (completed) -> Void in
+      self.showCollectionView()
+    }
+  }
+
+  @IBAction func notificationsYesTapped(sender: UIButton) {
+    UIApplication.sharedApplication().delegate?.enableNotifications()
+    UIView.animateWithDuration(0.5, animations: { () -> Void in
+      self.notificationContainerView.alpha = 0
+    }) { (completed) -> Void in
+      self.showCollectionView()
+    }
+  }
+
   func downloadData() {
     let env = NSProcessInfo.processInfo().environment
     let baseUrl = env["API_BASE_URL"] != nil ? env["API_BASE_URL"]! : "https://good-fridays.herokuapp.com"
@@ -65,7 +95,7 @@ class TrackCollectionViewController: UIViewController {
             let playerItem = AVPlayerItem(URL: trackUrl)
             Global.playerItems.append(playerItem)
           }
-          self.showCollectionView()
+          self.startUp()
         }
       case .Failure(let error):
         print(error)
@@ -73,16 +103,31 @@ class TrackCollectionViewController: UIViewController {
     }
   }
 
-  func showCollectionView() {
-    self.collectionView.reloadData()
+  func startUp() {
+    let hasAskedForNotifications = Global.defaults.boolForKey(Global.HasAskedForNotificationsKey)
     UIView.animateWithDuration(0.5, animations: { () -> Void in
       self.downloadingView.alpha = 0
     }) { (completed) -> Void in
       self.downloadingIndicatorView.stopAnimating()
-      UIView.animateWithDuration(0.5, animations: { () -> Void in
-        self.collectionView.alpha = 1
-      })
+      if !hasAskedForNotifications {
+        self.showAskForNotifications()
+      } else {
+        self.showCollectionView()
+      }
     }
+  }
+
+  func showAskForNotifications() {
+    UIView.animateWithDuration(0.5, animations: { () -> Void in
+      self.notificationContainerView.alpha = 1
+    })
+  }
+
+  func showCollectionView() {
+    self.collectionView.reloadData()
+    UIView.animateWithDuration(0.5, animations: { () -> Void in
+      self.collectionView.alpha = 1
+    })
   }
 
 }

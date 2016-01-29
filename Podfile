@@ -7,6 +7,7 @@ target 'GOOD Fridays' do
   pod 'AlamofireImage', '~> 2.0'
   pod 'Crashlytics'
   pod 'Fabric'
+  pod 'Mixpanel'
   pod 'SwiftyJSON', '~> 2.0'
 end
 

@@ -87,6 +87,71 @@
                                     <outlet property="delegate" destination="8ox-A9-lJh" id="Vf5-Bu-J97"/>
                                 </connections>
                             </collectionView>
+                            <view alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nxD-Bw-uS3">
+                                <rect key="frame" x="160" y="120" width="280" height="361"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="kanyeHoldUp" translatesAutoresizingMaskIntoConstraints="NO" id="3iD-Fc-23g">
+                                        <rect key="frame" x="0.0" y="0.0" width="280" height="160"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="160" id="hAr-6n-b71"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hold up!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xa7-Co-JyW">
+                                        <rect key="frame" x="0.0" y="180" width="280" height="29"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="24"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Want to know the next time Kanye drops a track? Tap &quot;Definitely&quot; to enable push notifications." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2a0-hg-GfZ">
+                                        <rect key="frame" x="0.0" y="219" width="280" height="63"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tyr-dm-0Fv">
+                                        <rect key="frame" x="0.0" y="322" width="125" height="39"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
+                                        <inset key="contentEdgeInsets" minX="0.0" minY="10" maxX="0.0" maxY="10"/>
+                                        <state key="normal" title="Nah">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="notificationsNoTapped:" destination="8ox-A9-lJh" eventType="touchUpInside" id="Y9d-6p-8rp"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DEm-v3-toC">
+                                        <rect key="frame" x="155" y="322" width="125" height="39"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
+                                        <inset key="contentEdgeInsets" minX="0.0" minY="10" maxX="0.0" maxY="10"/>
+                                        <state key="normal" title="Definitely">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="notificationsYesTapped:" destination="8ox-A9-lJh" eventType="touchUpInside" id="FNY-h1-xao"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="2a0-hg-GfZ" firstAttribute="top" secondItem="xa7-Co-JyW" secondAttribute="bottom" constant="10" id="32k-8o-nzP"/>
+                                    <constraint firstAttribute="trailing" secondItem="2a0-hg-GfZ" secondAttribute="trailing" id="33b-N1-PEe"/>
+                                    <constraint firstAttribute="width" constant="280" id="8co-2m-TjP"/>
+                                    <constraint firstAttribute="bottom" secondItem="DEm-v3-toC" secondAttribute="bottom" id="L3v-3f-Cpk"/>
+                                    <constraint firstItem="tyr-dm-0Fv" firstAttribute="width" secondItem="DEm-v3-toC" secondAttribute="width" id="SAZ-bV-GyJ"/>
+                                    <constraint firstAttribute="trailing" secondItem="xa7-Co-JyW" secondAttribute="trailing" id="VzQ-Qu-59G"/>
+                                    <constraint firstItem="xa7-Co-JyW" firstAttribute="top" secondItem="3iD-Fc-23g" secondAttribute="bottom" constant="20" id="Y6V-RD-Mhm"/>
+                                    <constraint firstItem="2a0-hg-GfZ" firstAttribute="leading" secondItem="nxD-Bw-uS3" secondAttribute="leading" id="a7e-i3-0hg"/>
+                                    <constraint firstAttribute="trailing" secondItem="3iD-Fc-23g" secondAttribute="trailing" id="daA-js-WmF"/>
+                                    <constraint firstItem="3iD-Fc-23g" firstAttribute="top" secondItem="nxD-Bw-uS3" secondAttribute="top" id="g3o-fm-yvW"/>
+                                    <constraint firstItem="3iD-Fc-23g" firstAttribute="leading" secondItem="nxD-Bw-uS3" secondAttribute="leading" id="lBz-Rq-sQJ"/>
+                                    <constraint firstAttribute="bottom" secondItem="tyr-dm-0Fv" secondAttribute="bottom" id="lDr-fV-D80"/>
+                                    <constraint firstItem="DEm-v3-toC" firstAttribute="leading" secondItem="tyr-dm-0Fv" secondAttribute="trailing" constant="30" id="oia-rn-UCI"/>
+                                    <constraint firstItem="xa7-Co-JyW" firstAttribute="leading" secondItem="nxD-Bw-uS3" secondAttribute="leading" id="pBX-bv-u7f"/>
+                                    <constraint firstItem="tyr-dm-0Fv" firstAttribute="leading" secondItem="nxD-Bw-uS3" secondAttribute="leading" id="tod-fk-7tg"/>
+                                    <constraint firstItem="tyr-dm-0Fv" firstAttribute="top" secondItem="2a0-hg-GfZ" secondAttribute="bottom" constant="40" id="vJv-2u-Vug"/>
+                                    <constraint firstAttribute="trailing" secondItem="DEm-v3-toC" secondAttribute="trailing" id="xna-2y-1ga"/>
+                                </constraints>
+                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="N88-bs-ohd">
                                 <rect key="frame" x="0.0" y="243" width="600" height="115"/>
                                 <subviews>
@@ -111,6 +176,7 @@
                         </subviews>
                         <color key="backgroundColor" red="0.1529411765" green="0.1529411765" blue="0.1529411765" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
+                            <constraint firstItem="nxD-Bw-uS3" firstAttribute="centerX" secondItem="e4M-Fj-uTM" secondAttribute="centerX" id="0O1-Yu-hMP"/>
                             <constraint firstAttribute="trailing" secondItem="0Nc-h2-i3g" secondAttribute="trailing" id="4eB-h4-eYP"/>
                             <constraint firstItem="54P-Js-wj1" firstAttribute="top" secondItem="sbP-i5-q6q" secondAttribute="bottom" id="7fs-vj-eLl"/>
                             <constraint firstAttribute="trailing" secondItem="sbP-i5-q6q" secondAttribute="trailing" id="9eG-8F-ONj"/>
@@ -124,6 +190,7 @@
                             <constraint firstItem="0Nc-h2-i3g" firstAttribute="leading" secondItem="e4M-Fj-uTM" secondAttribute="leading" id="Wdc-7r-7BV"/>
                             <constraint firstItem="N88-bs-ohd" firstAttribute="centerY" secondItem="e4M-Fj-uTM" secondAttribute="centerY" id="doH-by-uGA"/>
                             <constraint firstItem="sbP-i5-q6q" firstAttribute="top" secondItem="7gY-vY-nSa" secondAttribute="bottom" id="k8z-Yf-FLa"/>
+                            <constraint firstItem="nxD-Bw-uS3" firstAttribute="centerY" secondItem="e4M-Fj-uTM" secondAttribute="centerY" id="qjB-UG-gA6"/>
                             <constraint firstItem="0Nc-h2-i3g" firstAttribute="top" secondItem="e4M-Fj-uTM" secondAttribute="top" id="rXp-wN-n0h"/>
                             <constraint firstItem="54P-Js-wj1" firstAttribute="top" secondItem="mBb-ex-c91" secondAttribute="bottom" constant="-50" id="xiH-ks-3we"/>
                         </constraints>
@@ -134,6 +201,10 @@
                         <outlet property="collectionView" destination="sbP-i5-q6q" id="xVe-hv-HTI"/>
                         <outlet property="downloadingIndicatorView" destination="efv-Q6-dWg" id="WrH-Mq-5of"/>
                         <outlet property="downloadingView" destination="N88-bs-ohd" id="GTf-7I-alC"/>
+                        <outlet property="notificationContainerView" destination="nxD-Bw-uS3" id="aEY-5h-w0L"/>
+                        <outlet property="notificationImageView" destination="3iD-Fc-23g" id="BVP-se-ccC"/>
+                        <outlet property="notificationNoButton" destination="tyr-dm-0Fv" id="btQ-Wj-C2q"/>
+                        <outlet property="notificationYesButton" destination="DEm-v3-toC" id="ZPz-5M-UDF"/>
                         <segue destination="1X4-cQ-1dc" kind="presentation" identifier="TrackCollectionToTrackPage" id="EXj-XV-gqk"/>
                     </connections>
                 </viewController>
@@ -331,6 +402,7 @@
     </scenes>
     <resources>
         <image name="backgroundLargeBlurred" width="1000" height="1000"/>
+        <image name="kanyeHoldUp" width="900" height="530"/>
         <image name="next" width="44" height="50"/>
         <image name="play" width="89" height="100"/>
     </resources>

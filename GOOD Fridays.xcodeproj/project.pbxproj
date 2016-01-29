@@ -56,6 +56,7 @@
 		653057771C4F77250067A1A3 /* GOOD FridaysUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "GOOD FridaysUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6530577B1C4F77250067A1A3 /* GOOD_FridaysUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GOOD_FridaysUITests.swift; sourceTree = "<group>"; };
 		6530577D1C4F77250067A1A3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		65774A8A1C5B777E000651D4 /* GOOD-Fridays-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "GOOD-Fridays-Bridging-Header.h"; sourceTree = "<group>"; };
 		65EE70451C5711C900E377CC /* Global.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Global.swift; sourceTree = "<group>"; };
 		BFF91D94D137947A6F5E2F45 /* Pods-GOOD Fridays.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GOOD Fridays.release.xcconfig"; path = "Pods/Target Support Files/Pods-GOOD Fridays/Pods-GOOD Fridays.release.xcconfig"; sourceTree = "<group>"; };
 		E94B1FFA5CAD6724FADA318E /* Pods-GOOD Fridays.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GOOD Fridays.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GOOD Fridays/Pods-GOOD Fridays.debug.xcconfig"; sourceTree = "<group>"; };
@@ -155,6 +156,7 @@
 				653057621C4F77250067A1A3 /* Assets.xcassets */,
 				653057641C4F77250067A1A3 /* LaunchScreen.storyboard */,
 				653057671C4F77250067A1A3 /* Info.plist */,
+				65774A8A1C5B777E000651D4 /* GOOD-Fridays-Bridging-Header.h */,
 			);
 			path = "GOOD Fridays";
 			sourceTree = "<group>";
@@ -258,6 +260,11 @@
 					653057571C4F77240067A1A3 = {
 						CreatedOnToolsVersion = 7.2;
 						DevelopmentTeam = 2B64D32Y57;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+						};
 					};
 					6530576B1C4F77250067A1A3 = {
 						CreatedOnToolsVersion = 7.2;
@@ -536,6 +543,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.ianhirschfeld.GOOD-Fridays";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "GOOD Fridays/GOOD-Fridays-Bridging-Header.h";
 			};
 			name = Debug;
 		};
@@ -550,6 +558,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.ianhirschfeld.GOOD-Fridays";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "GOOD Fridays/GOOD-Fridays-Bridging-Header.h";
 			};
 			name = Release;
 		};

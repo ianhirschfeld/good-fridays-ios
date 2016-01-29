@@ -8,6 +8,7 @@
 
 import Fabric
 import Crashlytics
+import Mixpanel
 import UIKit
 
 @UIApplicationMain
@@ -15,9 +16,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
   var window: UIWindow?
 
-
   func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+    Mixpanel.sharedInstanceWithToken("10bf43f3bbe8fb29af9d82324b7f0f2d")
+    Mixpanel.sharedInstance().identify(Mixpanel.sharedInstance().distinctId)
     Fabric.with([Crashlytics.self()])
+
+    if isRegisteredForNotifications() {
+      enableNotifications()
+    }
 
     window?.backgroundColor = UIColor(red: 39.0/255.0, green: 39.0/255.0, blue: 39.0/255.0, alpha: 1)
     application.statusBarStyle = .LightContent
@@ -47,6 +53,35 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
   }
 
+  func application(application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: NSError) {
+    // TODO: Fill out if I want to handle this...
+  }
+
+  func application(application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: NSData) {
+    Mixpanel.sharedInstance().people.addPushDeviceToken(deviceToken)
+  }
+
+  func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject]) {
+    // TODO: Fill this out if I want to get fancy...
+  }
 
 }
 
+extension UIApplicationDelegate {
+
+  func isRegisteredForNotifications() -> Bool {
+    if (UIApplication.sharedApplication().isRegisteredForRemoteNotifications()) {
+      if let notificationSettings = UIApplication.sharedApplication().currentUserNotificationSettings() {
+        return notificationSettings.types != .None
+      }
+    }
+    return false
+  }
+
+  func enableNotifications() {
+    let notificationSettings = UIUserNotificationSettings(forTypes: [.Sound, .Alert, .Badge], categories: nil)
+    UIApplication.sharedApplication().registerUserNotificationSettings(notificationSettings)
+    UIApplication.sharedApplication().registerForRemoteNotifications()
+  }
+
+}

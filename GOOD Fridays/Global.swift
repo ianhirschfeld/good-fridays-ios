@@ -12,12 +12,15 @@ import UIKit
 
 struct Global {
 
-  static var isPlaying = false
-  static var shouldAutoPlay = false
+  static let HasAskedForNotificationsKey = "HasAskedForNotificationsKey"
+
+  static var defaults = NSUserDefaults.standardUserDefaults()
 
   static var player = AVPlayer()
   static var playerItems = [AVPlayerItem]()
-
   static var tracks = [JSON]()
+
+  static var isPlaying = false
+  static var shouldAutoPlay = false
 
 }

@@ -5,6 +5,9 @@ PODS:
   - Crashlytics (3.6.0):
     - Fabric (~> 1.6.3)
   - Fabric (1.6.4)
+  - Mixpanel (2.9.2):
+    - Mixpanel/Mixpanel (= 2.9.2)
+  - Mixpanel/Mixpanel (2.9.2)
   - SwiftyJSON (2.3.2)
 
 DEPENDENCIES:
@@ -12,6 +15,7 @@ DEPENDENCIES:
   - AlamofireImage (~> 2.0)
   - Crashlytics
   - Fabric
+  - Mixpanel
   - SwiftyJSON (~> 2.0)
 
 SPEC CHECKSUMS:
@@ -19,6 +23,7 @@ SPEC CHECKSUMS:
   AlamofireImage: 4013fb5b99b10117bf2554a67b9bd2231d476b45
   Crashlytics: e4e8d02914f2608fbc7bf42b1a7af838b0db67a2
   Fabric: ed41fd62173c6bdea24ab02c9d7707161eabb750
+  Mixpanel: 62a6b9904e97d5d3043c12a062deb408b2b9755f
   SwiftyJSON: 04ccea08915aa0109039157c7974cf0298da292a
 
 COCOAPODS: 0.39.0
