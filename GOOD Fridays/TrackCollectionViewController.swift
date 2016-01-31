@@ -131,6 +131,17 @@ class TrackCollectionViewController: UIViewController {
   }
 
   func startUp() {
+    do {
+      try AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback)
+      do {
+        try AVAudioSession.sharedInstance().setActive(true)
+      } catch let error as NSError {
+        print(error.localizedDescription)
+      }
+    } catch let error as NSError {
+      print(error.localizedDescription)
+    }
+
     let hasAskedForNotifications = Global.defaults.boolForKey(Global.HasAskedForNotificationsKey)
     UIView.animateWithDuration(0.5, animations: { () -> Void in
       self.downloadingView.alpha = 0
