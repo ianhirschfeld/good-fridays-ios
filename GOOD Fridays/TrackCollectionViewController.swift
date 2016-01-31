@@ -75,6 +75,36 @@ class TrackCollectionViewController: UIViewController {
     }
   }
 
+  override func remoteControlReceivedWithEvent(event: UIEvent?) {
+    guard let e = event else { return }
+    if e.type != UIEventType.RemoteControl { return }
+
+    switch e.subtype {
+    case .RemoteControlPlay:
+      print("remoteControlReceivedWithEvent: play")
+      break
+
+    case .RemoteControlStop, .RemoteControlPause:
+      print("remoteControlReceivedWithEvent: stop/pause")
+      break
+
+    case .RemoteControlNextTrack:
+      print("remoteControlReceivedWithEvent: next")
+      break
+
+    case .RemoteControlPreviousTrack:
+      print("remoteControlReceivedWithEvent: previous")
+      break
+
+    default:
+      break
+    }
+  }
+
+  override func canBecomeFirstResponder() -> Bool {
+    return true
+  }
+
   @IBAction func notificationsNoTapped(sender: UIButton) {
     Global.defaults.setBool(true, forKey: Global.HasAskedForNotificationsKey)
     UIView.animateWithDuration(0.5, animations: { () -> Void in
@@ -207,6 +237,20 @@ extension TrackCollectionViewController: UICollectionViewDataSource {
 
   func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
     performSegueWithIdentifier("TrackCollectionToTrackPage", sender: indexPath)
+  }
+
+}
+
+extension TrackCollectionViewController: AVAudioSessionDelegate {
+
+  func beginInterruption() {
+    // TODO:
+    print("beginInterruption")
+  }
+
+  func endInterruption() {
+    // TODO:
+    print("endInterruption")
   }
 
 }
