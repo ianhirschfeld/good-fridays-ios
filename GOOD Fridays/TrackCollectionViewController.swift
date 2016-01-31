@@ -70,6 +70,7 @@ class TrackCollectionViewController: UIViewController {
   }
 
   @IBAction func notificationsNoTapped(sender: UIButton) {
+    Global.defaults.setBool(true, forKey: Global.HasAskedForNotificationsKey)
     UIView.animateWithDuration(0.5, animations: { () -> Void in
       self.notificationContainerView.alpha = 0
     }) { (completed) -> Void in
@@ -78,6 +79,7 @@ class TrackCollectionViewController: UIViewController {
   }
 
   @IBAction func notificationsYesTapped(sender: UIButton) {
+    Global.defaults.setBool(true, forKey: Global.HasAskedForNotificationsKey)
     UIApplication.sharedApplication().delegate?.enableNotifications()
     UIView.animateWithDuration(0.5, animations: { () -> Void in
       self.notificationContainerView.alpha = 0
