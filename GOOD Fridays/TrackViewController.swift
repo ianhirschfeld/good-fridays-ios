@@ -279,7 +279,10 @@ class TrackViewController: UIViewController {
   }
 
   func setTimelineAttributes() {
-    let seconds = playerItem.currentTime().seconds
+    var seconds = playerItem.currentTime().seconds
+    if seconds < 0 {
+      seconds = 0
+    }
     let percent = CGFloat(seconds / (track["duration"].doubleValue / 1000))
     let threshold = view.frame.width - 40
     trackProgressLabel.text = timestamp(seconds)
@@ -295,6 +298,11 @@ class TrackViewController: UIViewController {
   func timestamp(seconds: Double) -> String {
     let minutes = Int(floor(seconds / 60))
     let seconds = Int(floor(seconds - Double(minutes * 60)))
+
+    if minutes < 0 || seconds < 0 {
+      return "0:00"
+    }
+
     var timestamp = "\(minutes):"
     timestamp += seconds >= 10 ? "\(seconds)" : "0\(seconds)"
     return timestamp
