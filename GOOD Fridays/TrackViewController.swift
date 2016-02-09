@@ -22,6 +22,8 @@ class TrackViewController: UIViewController {
   @IBOutlet weak var trackBackgroundArtImageView: UIImageView!
   @IBOutlet weak var trackDurationLabel: UILabel!
   @IBOutlet weak var trackProgressLabel: UILabel!
+  @IBOutlet weak var trackSourceLabel: UILabel!
+  @IBOutlet weak var trackUploaderLabel: UILabel!
   @IBOutlet weak var trackTimelineView: UIView!
   @IBOutlet weak var trackTimelineProgressView: UIView!
   @IBOutlet weak var trackTimelineScrubberView: UIView!
@@ -43,6 +45,9 @@ class TrackViewController: UIViewController {
 
   override func viewDidLoad() {
     super.viewDidLoad()
+
+    trackSourceLabel.text = "Source: \(track["source"].stringValue)"
+    trackUploaderLabel.text = "Uploader: \(track["uploader"].stringValue)"
 
     let artworkUrl = NSURL(string: track["artwork_url"].stringValue)!
     let backgroundArtworkFilter = BlurFilter(blurRadius: 20)
