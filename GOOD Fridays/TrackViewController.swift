@@ -81,6 +81,10 @@ class TrackViewController: UIViewController {
     playButton.imageView?.contentMode = .ScaleAspectFit
     playButton.setImage(playButton.imageView?.image?.imageWithRenderingMode(.AlwaysTemplate), forState: .Normal)
     playButton.tintColor = UIColor.whiteColor()
+    if !track["streamable"].boolValue {
+      playButton.enabled = false
+      playButton.alpha = 0.3
+    }
 
     previousButton.layer.borderColor = UIColor(white: 1, alpha: 0.5).CGColor
     previousButton.layer.borderWidth = 1
@@ -97,36 +101,34 @@ class TrackViewController: UIViewController {
     trackTimelineProgressTrailingConstraint.constant = view.frame.width - 40
     view.layoutIfNeeded()
 
-    let hitboxTapGesture = UITapGestureRecognizer(target: self, action: "hitboxTapped:")
-    hitboxView.addGestureRecognizer(hitboxTapGesture)
+    if track["streamable"].boolValue {
+      let hitboxTapGesture = UITapGestureRecognizer(target: self, action: "hitboxTapped:")
+      hitboxView.addGestureRecognizer(hitboxTapGesture)
 
-    let timelinePanGesture = UIPanGestureRecognizer(target: self, action: "timelinePanned:")
-    timelinePanGesture.maximumNumberOfTouches = 1
-    trackTimelineScrubberView.addGestureRecognizer(timelinePanGesture)
+      let timelinePanGesture = UIPanGestureRecognizer(target: self, action: "timelinePanned:")
+      timelinePanGesture.maximumNumberOfTouches = 1
+      trackTimelineScrubberView.addGestureRecognizer(timelinePanGesture)
+    }
   }
 
   override func viewDidAppear(animated: Bool) {
     super.viewDidAppear(animated)
 
-    playerItem = Global.playerItems[index]
-    Global.player.replaceCurrentItemWithPlayerItem(playerItem)
+    if track["streamable"].boolValue {
+      playerItem = Global.playerItems[index]
+      Global.player.replaceCurrentItemWithPlayerItem(playerItem)
 
-    if Global.shouldAutoPlay || Global.isPlaying {
-      Global.shouldAutoPlay = false
-      playTrack()
-    } else {
-      setTimelineAttributes()
+      if Global.shouldAutoPlay || Global.isPlaying {
+        Global.shouldAutoPlay = false
+        playTrack()
+      } else {
+        setTimelineAttributes()
+      }
     }
+
+    toggleActionView()
 
     NSNotificationCenter.defaultCenter().addObserver(self, selector: "playerItemFinished:", name: AVPlayerItemDidPlayToEndTimeNotification, object: playerItem)
-  }
-
-  override func viewDidDisappear(animated: Bool) {
-    super.viewDidDisappear(animated)
-
-    if actionView.alpha == 1 {
-      actionView.alpha = 0
-    }
   }
 
   override func viewWillDisappear(animated: Bool) {
@@ -226,12 +228,16 @@ class TrackViewController: UIViewController {
     Global.isPlaying ? pauseTrack() : playTrack()
   }
 
+  func toggleActionView() {
+    let alpha: CGFloat = Global.isPlaying && track["streamable"].boolValue ? 0 : 1
+    UIView.animateWithDuration(0.2, delay: 0, options: .BeginFromCurrentState, animations: { () -> Void in
+      self.actionView.alpha = alpha
+    }, completion: nil)
+  }
+
   func hitboxTapped(gesture: UITapGestureRecognizer) {
     togglePlayTrack()
-    let alpha: CGFloat = Global.isPlaying ? 0 : 1
-    UIView.animateWithDuration(0.2, animations: { () -> Void in
-      self.actionView.alpha = alpha
-    })
+    toggleActionView()
   }
 
   func timelinePanned(gesture: UIPanGestureRecognizer) {
