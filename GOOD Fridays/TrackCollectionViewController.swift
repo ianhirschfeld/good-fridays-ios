@@ -61,6 +61,12 @@ class TrackCollectionViewController: UIViewController {
     }
   }
 
+  override func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
+    coordinator.animateAlongsideTransition(nil) { (UIViewControllerTransitionCoordinatorContext) -> Void in
+      self.collectionView.reloadData()
+    }
+  }
+
   override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
     if segue.identifier == "TrackCollectionToTrackPage" {
       let indexPath = sender as! NSIndexPath
@@ -175,7 +181,8 @@ extension TrackCollectionViewController: UICollectionViewDelegate {}
 extension TrackCollectionViewController: UICollectionViewDelegateFlowLayout {
 
   func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
-    let cellSize = (view.frame.width - (CollectionMargin * 2) - (CellMargin * 2)) / 3
+    let divisor: CGFloat = view.frame.width > view.frame.height ? 4 : 3
+    let cellSize = floor((view.frame.width - (CollectionMargin * 2) - (CellMargin * (divisor - 1))) / divisor)
     return CGSize(width: cellSize, height: cellSize)
   }
 
