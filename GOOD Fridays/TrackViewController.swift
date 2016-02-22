@@ -10,6 +10,7 @@ import AlamofireImage
 import AVFoundation
 import UIKit
 import SwiftyJSON
+import TTTAttributedLabel
 
 class TrackViewController: UIViewController {
 
@@ -21,13 +22,14 @@ class TrackViewController: UIViewController {
   @IBOutlet weak var trackArtImageView: UIImageView!
   @IBOutlet weak var trackBackgroundArtImageView: UIImageView!
   @IBOutlet weak var trackDurationLabel: UILabel!
+  @IBOutlet weak var trackNotStreamableLabel: TTTAttributedLabel!
   @IBOutlet weak var trackProgressLabel: UILabel!
   @IBOutlet weak var trackSourceLabel: UILabel!
-  @IBOutlet weak var trackUploaderLabel: UILabel!
   @IBOutlet weak var trackTimelineView: UIView!
   @IBOutlet weak var trackTimelineProgressView: UIView!
   @IBOutlet weak var trackTimelineScrubberView: UIView!
   @IBOutlet weak var trackTitleLabel: UILabel!
+  @IBOutlet weak var trackUploaderLabel: UILabel!
 
   @IBOutlet weak var trackArtImageViewLeadingConstraint: NSLayoutConstraint!
   @IBOutlet weak var trackArtImageViewTrailingConstraint: NSLayoutConstraint!
@@ -108,6 +110,25 @@ class TrackViewController: UIViewController {
       let timelinePanGesture = UIPanGestureRecognizer(target: self, action: "timelinePanned:")
       timelinePanGesture.maximumNumberOfTouches = 1
       trackTimelineScrubberView.addGestureRecognizer(timelinePanGesture)
+    } else {
+      trackNotStreamableLabel.hidden = false
+      trackNotStreamableLabel.linkAttributes = [
+        kCTForegroundColorAttributeName: UIColor.whiteColor(),
+        kCTUnderlineStyleAttributeName: NSNumber(int: CTUnderlineStyle.Single.rawValue)
+      ]
+      trackNotStreamableLabel.activeLinkAttributes = [
+        kCTForegroundColorAttributeName: UIColor(white: 1, alpha: 0.3),
+        kCTUnderlineStyleAttributeName: NSNumber(int: CTUnderlineStyle.Single.rawValue)
+      ]
+      trackNotStreamableLabel.delegate = self
+      if let permalinkUrl = NSURL(string: track["permalink_url"].stringValue) {
+        if let text = trackNotStreamableLabel.text {
+          if let startRange = text.rangeOfString("Tap here") {
+            let location = text.startIndex.distanceTo(startRange.startIndex)
+            trackNotStreamableLabel.addLinkToURL(permalinkUrl, withRange: NSRange(location: location, length: 8))
+          }
+        }
+      }
     }
   }
 
@@ -131,6 +152,22 @@ class TrackViewController: UIViewController {
     NSNotificationCenter.defaultCenter().addObserver(self, selector: "playerItemFinished:", name: AVPlayerItemDidPlayToEndTimeNotification, object: playerItem)
   }
 
+  override func viewDidLayoutSubviews() {
+    super.viewDidLayoutSubviews()
+
+    if view.frame.width >= view.frame.height {
+      let targetHeight = view.frame.height / 2
+      let targetPadding = (view.frame.width - targetHeight - 40) / 2
+      trackArtImageViewLeadingConstraint.constant = targetPadding
+      trackArtImageViewTrailingConstraint.constant = targetPadding
+    } else {
+      let padding: CGFloat = UIDevice.currentDevice().userInterfaceIdiom == .Pad ? 40 : 20
+      trackArtImageViewLeadingConstraint.constant = padding
+      trackArtImageViewTrailingConstraint.constant = padding
+    }
+    view.layoutIfNeeded()
+  }
+
   override func viewWillDisappear(animated: Bool) {
     super.viewWillDisappear(animated)
 
@@ -140,18 +177,11 @@ class TrackViewController: UIViewController {
     }
   }
 
-  override func viewDidLayoutSubviews() {
-    super.viewDidLayoutSubviews()
-
-    if view.frame.width >= view.frame.height {
-      let targetHeight = view.frame.height / 2
-      let targetPadding = (view.frame.width - targetHeight - 50) / 2
-      trackArtImageViewLeadingConstraint.constant = targetPadding
-      trackArtImageViewTrailingConstraint.constant = targetPadding
-    } else {
-      let padding: CGFloat = UIDevice.currentDevice().userInterfaceIdiom == .Pad ? 40 : 20
-      trackArtImageViewLeadingConstraint.constant = padding
-      trackArtImageViewTrailingConstraint.constant = padding
+  override func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
+    coordinator.animateAlongsideTransition(nil) { (UIViewControllerTransitionCoordinatorContext) -> Void in
+      if !Global.isPlaying {
+        self.setTimelineAttributes()
+      }
     }
   }
 
@@ -285,7 +315,7 @@ class TrackViewController: UIViewController {
   }
 
   func setTimelineAttributes() {
-    var seconds = playerItem.currentTime().seconds
+    var seconds = playerItem == nil ? 0 : playerItem.currentTime().seconds
     if seconds < 0 {
       seconds = 0
     }
@@ -312,6 +342,16 @@ class TrackViewController: UIViewController {
     var timestamp = "\(minutes):"
     timestamp += seconds >= 10 ? "\(seconds)" : "0\(seconds)"
     return timestamp
+  }
+
+}
+
+extension TrackViewController: TTTAttributedLabelDelegate {
+
+  func attributedLabel(label: TTTAttributedLabel!, didSelectLinkWithURL url: NSURL!) {
+    if UIApplication.sharedApplication().canOpenURL(url) {
+      UIApplication.sharedApplication().openURL(url)
+    }
   }
 
 }

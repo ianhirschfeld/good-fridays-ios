@@ -7,7 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		15F6E69F536CA4E93714925A /* Pods_GOOD_Fridays.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06E3926133D903FBA26A2632 /* Pods_GOOD_Fridays.framework */; };
+		2FE284E3F51202D57B6D237E /* Pods_GOOD_FridaysUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8D10010CE02EB9838C65E546 /* Pods_GOOD_FridaysUITests.framework */; };
+		38D3E1DCEF012EF4AB4FF761 /* Pods_GOOD_FridaysTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2AF1CEA6C7F7F4313C60F0B6 /* Pods_GOOD_FridaysTests.framework */; };
 		6515EC121C57444B00783D35 /* TrackCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6515EC111C57444B00783D35 /* TrackCollectionViewController.swift */; };
 		6515EC161C5749CD00783D35 /* TrackCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6515EC151C5749CD00783D35 /* TrackCollectionViewCell.swift */; };
 		6516BBCF1C50636E005F6C83 /* TrackPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6516BBCE1C50636E005F6C83 /* TrackPageViewController.swift */; };
@@ -19,6 +20,7 @@
 		653057711C4F77250067A1A3 /* GOOD_FridaysTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 653057701C4F77250067A1A3 /* GOOD_FridaysTests.swift */; };
 		6530577C1C4F77250067A1A3 /* GOOD_FridaysUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6530577B1C4F77250067A1A3 /* GOOD_FridaysUITests.swift */; };
 		65EE70461C5711C900E377CC /* Global.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65EE70451C5711C900E377CC /* Global.swift */; };
+		A324159E8C17CEA2DBD71333 /* Pods_GOOD_Fridays.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B3E81355766822F715A5DF9 /* Pods_GOOD_Fridays.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -39,7 +41,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		06E3926133D903FBA26A2632 /* Pods_GOOD_Fridays.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GOOD_Fridays.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		0F7CC94329E6EBA8F75858D7 /* Pods-GOOD Fridays.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GOOD Fridays.release.xcconfig"; path = "Pods/Target Support Files/Pods-GOOD Fridays/Pods-GOOD Fridays.release.xcconfig"; sourceTree = "<group>"; };
+		23623987D627B8D8CB1AD7D4 /* Pods-GOOD FridaysUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GOOD FridaysUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-GOOD FridaysUITests/Pods-GOOD FridaysUITests.release.xcconfig"; sourceTree = "<group>"; };
+		2AF1CEA6C7F7F4313C60F0B6 /* Pods_GOOD_FridaysTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GOOD_FridaysTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		422A15B07FB3964F5F2F78E0 /* Pods-GOOD FridaysTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GOOD FridaysTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-GOOD FridaysTests/Pods-GOOD FridaysTests.release.xcconfig"; sourceTree = "<group>"; };
+		4B3E81355766822F715A5DF9 /* Pods_GOOD_Fridays.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GOOD_Fridays.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6515EC111C57444B00783D35 /* TrackCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrackCollectionViewController.swift; sourceTree = "<group>"; };
 		6515EC151C5749CD00783D35 /* TrackCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrackCollectionViewCell.swift; sourceTree = "<group>"; };
 		6516BBCE1C50636E005F6C83 /* TrackPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrackPageViewController.swift; sourceTree = "<group>"; };
@@ -58,8 +64,10 @@
 		6530577D1C4F77250067A1A3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		65774A8A1C5B777E000651D4 /* GOOD-Fridays-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "GOOD-Fridays-Bridging-Header.h"; sourceTree = "<group>"; };
 		65EE70451C5711C900E377CC /* Global.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Global.swift; sourceTree = "<group>"; };
-		BFF91D94D137947A6F5E2F45 /* Pods-GOOD Fridays.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GOOD Fridays.release.xcconfig"; path = "Pods/Target Support Files/Pods-GOOD Fridays/Pods-GOOD Fridays.release.xcconfig"; sourceTree = "<group>"; };
-		E94B1FFA5CAD6724FADA318E /* Pods-GOOD Fridays.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GOOD Fridays.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GOOD Fridays/Pods-GOOD Fridays.debug.xcconfig"; sourceTree = "<group>"; };
+		7EAFA7309F760FFE21BE9826 /* Pods-GOOD FridaysTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GOOD FridaysTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GOOD FridaysTests/Pods-GOOD FridaysTests.debug.xcconfig"; sourceTree = "<group>"; };
+		8D10010CE02EB9838C65E546 /* Pods_GOOD_FridaysUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GOOD_FridaysUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8E987C572166F0DB80BEEB9E /* Pods-GOOD FridaysUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GOOD FridaysUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GOOD FridaysUITests/Pods-GOOD FridaysUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		B383EC58B30252841D7FE294 /* Pods-GOOD Fridays.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GOOD Fridays.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GOOD Fridays/Pods-GOOD Fridays.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,7 +75,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				15F6E69F536CA4E93714925A /* Pods_GOOD_Fridays.framework in Frameworks */,
+				A324159E8C17CEA2DBD71333 /* Pods_GOOD_Fridays.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -75,6 +83,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				38D3E1DCEF012EF4AB4FF761 /* Pods_GOOD_FridaysTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -82,17 +91,32 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2FE284E3F51202D57B6D237E /* Pods_GOOD_FridaysUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		0EBD8EB01782255317FD8042 /* Pods */ = {
+		23768EBDE7E8F32C8E4FF0FA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				E94B1FFA5CAD6724FADA318E /* Pods-GOOD Fridays.debug.xcconfig */,
-				BFF91D94D137947A6F5E2F45 /* Pods-GOOD Fridays.release.xcconfig */,
+				4B3E81355766822F715A5DF9 /* Pods_GOOD_Fridays.framework */,
+				2AF1CEA6C7F7F4313C60F0B6 /* Pods_GOOD_FridaysTests.framework */,
+				8D10010CE02EB9838C65E546 /* Pods_GOOD_FridaysUITests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		5297109B789872F90B120743 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				B383EC58B30252841D7FE294 /* Pods-GOOD Fridays.debug.xcconfig */,
+				0F7CC94329E6EBA8F75858D7 /* Pods-GOOD Fridays.release.xcconfig */,
+				7EAFA7309F760FFE21BE9826 /* Pods-GOOD FridaysTests.debug.xcconfig */,
+				422A15B07FB3964F5F2F78E0 /* Pods-GOOD FridaysTests.release.xcconfig */,
+				8E987C572166F0DB80BEEB9E /* Pods-GOOD FridaysUITests.debug.xcconfig */,
+				23623987D627B8D8CB1AD7D4 /* Pods-GOOD FridaysUITests.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -130,8 +154,8 @@
 				6530576F1C4F77250067A1A3 /* GOOD FridaysTests */,
 				6530577A1C4F77250067A1A3 /* GOOD FridaysUITests */,
 				653057591C4F77240067A1A3 /* Products */,
-				0EBD8EB01782255317FD8042 /* Pods */,
-				A57030B93BFB4A24098DF1A4 /* Frameworks */,
+				5297109B789872F90B120743 /* Pods */,
+				23768EBDE7E8F32C8E4FF0FA /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -179,14 +203,6 @@
 			path = "GOOD FridaysUITests";
 			sourceTree = "<group>";
 		};
-		A57030B93BFB4A24098DF1A4 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				06E3926133D903FBA26A2632 /* Pods_GOOD_Fridays.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -194,13 +210,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 653057801C4F77250067A1A3 /* Build configuration list for PBXNativeTarget "GOOD Fridays" */;
 			buildPhases = (
-				40297B37EEEFB1D59FC92C62 /* Check Pods Manifest.lock */,
+				83D0BA02DFE4A6B3E9123B7B /* Check Pods Manifest.lock */,
 				653057541C4F77240067A1A3 /* Sources */,
 				653057551C4F77240067A1A3 /* Frameworks */,
 				653057561C4F77240067A1A3 /* Resources */,
-				7568DE329978BF671E53AD26 /* Embed Pods Frameworks */,
-				8B241ED46E40EA14F3963566 /* Copy Pods Resources */,
 				65774A891C5B581F000651D4 /* ShellScript */,
+				173B32AA6F2E8630083489CE /* Embed Pods Frameworks */,
+				33E4D41FEEE7606F9B21B6B3 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -215,9 +231,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 653057831C4F77250067A1A3 /* Build configuration list for PBXNativeTarget "GOOD FridaysTests" */;
 			buildPhases = (
+				0AF005E89F18C3003AA31950 /* Check Pods Manifest.lock */,
 				653057681C4F77250067A1A3 /* Sources */,
 				653057691C4F77250067A1A3 /* Frameworks */,
 				6530576A1C4F77250067A1A3 /* Resources */,
+				EA1EB06E64E04D117C687AFB /* Embed Pods Frameworks */,
+				6EDD2F9AE0B650F15FB82587 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -233,9 +252,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 653057861C4F77250067A1A3 /* Build configuration list for PBXNativeTarget "GOOD FridaysUITests" */;
 			buildPhases = (
+				6CF10A399C60E5522685575F /* Check Pods Manifest.lock */,
 				653057731C4F77250067A1A3 /* Sources */,
 				653057741C4F77250067A1A3 /* Frameworks */,
 				653057751C4F77250067A1A3 /* Resources */,
+				ECB39F3C46CD4C443DE6EE4B /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -327,7 +348,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		40297B37EEEFB1D59FC92C62 /* Check Pods Manifest.lock */ = {
+		0AF005E89F18C3003AA31950 /* Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -340,6 +361,36 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		173B32AA6F2E8630083489CE /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-GOOD Fridays/Pods-GOOD Fridays-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		33E4D41FEEE7606F9B21B6B3 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-GOOD Fridays/Pods-GOOD Fridays-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		65774A891C5B581F000651D4 /* ShellScript */ = {
@@ -355,22 +406,22 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Fabric/run\" 9b00e00d9edcbfbd35c621f9f13c1297d540ee6f 656df76d8d331105c5bf02dbd23eaedffb74dc19ebf910f78a9871e97c20c6bb";
 		};
-		7568DE329978BF671E53AD26 /* Embed Pods Frameworks */ = {
+		6CF10A399C60E5522685575F /* Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Embed Pods Frameworks";
+			name = "Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-GOOD Fridays/Pods-GOOD Fridays-frameworks.sh\"\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
-		8B241ED46E40EA14F3963566 /* Copy Pods Resources */ = {
+		6EDD2F9AE0B650F15FB82587 /* Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -382,7 +433,52 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-GOOD Fridays/Pods-GOOD Fridays-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-GOOD FridaysTests/Pods-GOOD FridaysTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		83D0BA02DFE4A6B3E9123B7B /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		EA1EB06E64E04D117C687AFB /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-GOOD FridaysTests/Pods-GOOD FridaysTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		ECB39F3C46CD4C443DE6EE4B /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-GOOD FridaysUITests/Pods-GOOD FridaysUITests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -537,7 +633,7 @@
 		};
 		653057811C4F77250067A1A3 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = E94B1FFA5CAD6724FADA318E /* Pods-GOOD Fridays.debug.xcconfig */;
+			baseConfigurationReference = B383EC58B30252841D7FE294 /* Pods-GOOD Fridays.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -553,7 +649,7 @@
 		};
 		653057821C4F77250067A1A3 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = BFF91D94D137947A6F5E2F45 /* Pods-GOOD Fridays.release.xcconfig */;
+			baseConfigurationReference = 0F7CC94329E6EBA8F75858D7 /* Pods-GOOD Fridays.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -569,6 +665,7 @@
 		};
 		653057841C4F77250067A1A3 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7EAFA7309F760FFE21BE9826 /* Pods-GOOD FridaysTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				INFOPLIST_FILE = "GOOD FridaysTests/Info.plist";
@@ -581,6 +678,7 @@
 		};
 		653057851C4F77250067A1A3 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 422A15B07FB3964F5F2F78E0 /* Pods-GOOD FridaysTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				INFOPLIST_FILE = "GOOD FridaysTests/Info.plist";
@@ -593,6 +691,7 @@
 		};
 		653057871C4F77250067A1A3 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8E987C572166F0DB80BEEB9E /* Pods-GOOD FridaysUITests.debug.xcconfig */;
 			buildSettings = {
 				INFOPLIST_FILE = "GOOD FridaysUITests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -605,6 +704,7 @@
 		};
 		653057881C4F77250067A1A3 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 23623987D627B8D8CB1AD7D4 /* Pods-GOOD FridaysUITests.release.xcconfig */;
 			buildSettings = {
 				INFOPLIST_FILE = "GOOD FridaysUITests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";

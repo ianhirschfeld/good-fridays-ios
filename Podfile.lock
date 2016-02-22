@@ -9,6 +9,7 @@ PODS:
     - Mixpanel/Mixpanel (= 2.9.2)
   - Mixpanel/Mixpanel (2.9.2)
   - SwiftyJSON (2.3.2)
+  - TTTAttributedLabel (1.13.4)
 
 DEPENDENCIES:
   - Alamofire (~> 3.0)
@@ -17,6 +18,7 @@ DEPENDENCIES:
   - Fabric
   - Mixpanel
   - SwiftyJSON (~> 2.0)
+  - TTTAttributedLabel
 
 SPEC CHECKSUMS:
   Alamofire: 5f730ba29fd113b7ddd71c1e65d0c630acf5d7b0
@@ -25,5 +27,8 @@ SPEC CHECKSUMS:
   Fabric: ed41fd62173c6bdea24ab02c9d7707161eabb750
   Mixpanel: 62a6b9904e97d5d3043c12a062deb408b2b9755f
   SwiftyJSON: 04ccea08915aa0109039157c7974cf0298da292a
+  TTTAttributedLabel: 0a2ac7b2dd726d32a070dafb01446026b11e624f
 
-COCOAPODS: 0.39.0
+PODFILE CHECKSUM: caf68586f9259a27187a2136ab831904bb0079c7
+
+COCOAPODS: 1.0.0.beta.3

@@ -234,7 +234,7 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="XZ7-kw-4RI">
                                 <rect key="frame" x="20" y="40" width="560" height="560"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" secondItem="XZ7-kw-4RI" secondAttribute="height" multiplier="1:1" id="DeI-ki-wzU"/>
+                                    <constraint firstAttribute="width" secondItem="XZ7-kw-4RI" secondAttribute="height" multiplier="1:1" priority="999" id="DeI-ki-wzU"/>
                                 </constraints>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dsy-9z-9lh">
@@ -330,14 +330,20 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="This track has streaming disabled. Tap here to listen to it on SoundCloud." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SLR-x8-be7" customClass="TTTAttributedLabel">
+                                <rect key="frame" x="50" y="669" width="500" height="61.5"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="14"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3:42" textAlignment="right" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JJM-6p-YJ9">
-                                <rect key="frame" x="553" y="751" width="27" height="16"/>
+                                <rect key="frame" x="552" y="750" width="27.5" height="16.5"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1:51" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9a7-vZ-H4z">
-                                <rect key="frame" x="20" y="751" width="28" height="16"/>
+                                <rect key="frame" x="20" y="750" width="27.5" height="16.5"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -360,7 +366,7 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="T5Z-Pd-F6u">
-                                <rect key="frame" x="0.0" y="751" width="600" height="49"/>
+                                <rect key="frame" x="0.0" y="750" width="600" height="49.5"/>
                             </view>
                         </subviews>
                         <color key="backgroundColor" red="0.1529411765" green="0.1529411765" blue="0.1529411765" alpha="1" colorSpace="calibratedRGB"/>
@@ -373,9 +379,12 @@
                             </constraint>
                             <constraint firstItem="YzF-xi-geS" firstAttribute="top" secondItem="XZ7-kw-4RI" secondAttribute="bottom" constant="20" id="7pu-A0-CEf"/>
                             <constraint firstItem="vOT-5l-Gtx" firstAttribute="top" secondItem="JJM-6p-YJ9" secondAttribute="bottom" constant="6" id="7xY-Cs-DDR"/>
+                            <constraint firstItem="T5Z-Pd-F6u" firstAttribute="top" secondItem="SLR-x8-be7" secondAttribute="bottom" constant="20" id="7yP-LW-dWH"/>
+                            <constraint firstItem="SLR-x8-be7" firstAttribute="top" secondItem="YzF-xi-geS" secondAttribute="bottom" constant="20" id="97q-rk-EEH"/>
                             <constraint firstAttribute="trailing" secondItem="XZ7-kw-4RI" secondAttribute="trailing" constant="20" id="9uj-zU-XLE">
                                 <variation key="heightClass=regular-widthClass=regular" constant="40"/>
                             </constraint>
+                            <constraint firstAttribute="trailing" secondItem="SLR-x8-be7" secondAttribute="trailing" constant="50" id="EZt-mJ-TpA"/>
                             <constraint firstAttribute="trailing" secondItem="f9s-Df-u2c" secondAttribute="trailing" id="HCi-7I-I4I"/>
                             <constraint firstAttribute="trailing" secondItem="YzF-xi-geS" secondAttribute="trailing" constant="50" id="Kl5-in-9LO"/>
                             <constraint firstItem="14p-LQ-BYU" firstAttribute="top" secondItem="dsy-9z-9lh" secondAttribute="bottom" id="Mz5-63-eKn"/>
@@ -391,6 +400,7 @@
                             <constraint firstItem="vOT-5l-Gtx" firstAttribute="top" secondItem="9a7-vZ-H4z" secondAttribute="bottom" constant="6" id="fN6-q8-LXt"/>
                             <constraint firstAttribute="trailing" secondItem="vOT-5l-Gtx" secondAttribute="trailing" constant="20" id="fUc-Zg-XjT"/>
                             <constraint firstAttribute="trailing" secondItem="dsy-9z-9lh" secondAttribute="trailing" id="jkF-FA-7Eu"/>
+                            <constraint firstItem="SLR-x8-be7" firstAttribute="leading" secondItem="hyo-sr-m2s" secondAttribute="leading" constant="50" id="jmA-kM-rKe"/>
                             <constraint firstItem="T5Z-Pd-F6u" firstAttribute="top" secondItem="JJM-6p-YJ9" secondAttribute="top" id="l24-2k-Htb"/>
                             <constraint firstItem="XZ7-kw-4RI" firstAttribute="leading" secondItem="hyo-sr-m2s" secondAttribute="leading" constant="20" id="nCd-O7-tZ7">
                                 <variation key="heightClass=regular-widthClass=regular" constant="40"/>
@@ -416,6 +426,7 @@
                         <outlet property="trackArtImageViewTrailingConstraint" destination="9uj-zU-XLE" id="7nB-AB-Gur"/>
                         <outlet property="trackBackgroundArtImageView" destination="1Ih-8j-bDw" id="udc-ey-hN6"/>
                         <outlet property="trackDurationLabel" destination="JJM-6p-YJ9" id="Tch-Sv-1Pd"/>
+                        <outlet property="trackNotStreamableLabel" destination="SLR-x8-be7" id="PaQ-mt-wub"/>
                         <outlet property="trackProgressLabel" destination="9a7-vZ-H4z" id="Udy-gU-gYg"/>
                         <outlet property="trackSourceLabel" destination="0aJ-gk-8wg" id="4P5-YW-bxe"/>
                         <outlet property="trackTimelineProgressTrailingConstraint" destination="zIN-HB-mWr" id="uDK-YR-1tj"/>

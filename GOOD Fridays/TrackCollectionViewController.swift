@@ -89,7 +89,7 @@ class TrackCollectionViewController: UIViewController {
   }
 
   func downloadData() {
-    Alamofire.request(.GET, "\(baseUrl)/tracks.json").validate().responseJSON { [unowned self] response in
+    Alamofire.request(.GET, "\(baseUrl)/tracks_v2.json").validate().responseJSON { [unowned self] response in
       switch response.result {
       case .Success:
         if let value = response.result.value {
@@ -108,7 +108,7 @@ class TrackCollectionViewController: UIViewController {
   }
 
   func reloadData() {
-    Alamofire.request(.GET, "\(baseUrl)/tracks.json").validate().responseJSON { [unowned self] response in
+    Alamofire.request(.GET, "\(baseUrl)/tracks_v2.json").validate().responseJSON { [unowned self] response in
       switch response.result {
       case .Success:
         if let value = response.result.value {

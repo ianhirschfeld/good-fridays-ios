@@ -9,6 +9,7 @@ target 'GOOD Fridays' do
   pod 'Fabric'
   pod 'Mixpanel'
   pod 'SwiftyJSON', '~> 2.0'
+  pod 'TTTAttributedLabel'
 end
 
 target 'GOOD FridaysTests' do
