@@ -36,6 +36,7 @@ class TrackPageViewController: UIPageViewController {
     let trackViewController = storyboard?.instantiateViewControllerWithIdentifier("TrackViewController") as! TrackViewController
     trackViewController.delegate = self
     trackViewController.track = Global.tracks[index]
+    Global.currentIndex = index
     return trackViewController
   }
 

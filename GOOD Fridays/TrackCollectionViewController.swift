@@ -10,6 +10,7 @@ import Alamofire
 import AlamofireImage
 import AVFoundation
 import Mixpanel
+import MediaPlayer
 import UIKit
 import SwiftyJSON
 
@@ -48,6 +49,11 @@ class TrackCollectionViewController: UIViewController {
     Global.tracks = [JSON]()
     Global.playerItems = [AVPlayerItem]()
     shouldDownloadData = true
+
+    MPRemoteCommandCenter.sharedCommandCenter().nextTrackCommand.addTarget(self, action: "handleNextTrackCommand:")
+    MPRemoteCommandCenter.sharedCommandCenter().pauseCommand.addTarget(self, action: "handlePauseCommand:")
+    MPRemoteCommandCenter.sharedCommandCenter().playCommand.addTarget(self, action: "handlePlayCommand:")
+    MPRemoteCommandCenter.sharedCommandCenter().previousTrackCommand.addTarget(self, action: "handlePreviousTrackCommand:")
   }
 
   override func viewDidAppear(animated: Bool) {
@@ -59,6 +65,14 @@ class TrackCollectionViewController: UIViewController {
     } else {
       reloadData()
     }
+
+    NSNotificationCenter.defaultCenter().addObserver(self, selector: "pauseTrackCommand:", name: Global.PauseTrackNotification, object: nil)
+    NSNotificationCenter.defaultCenter().addObserver(self, selector: "playTrackCommand:", name: Global.PlayTrackCommandNotification, object: nil)
+  }
+
+  override func viewDidDisappear(animated: Bool) {
+    super.viewDidDisappear(animated)
+    NSNotificationCenter.defaultCenter().removeObserver(self)
   }
 
   override func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
@@ -73,36 +87,6 @@ class TrackCollectionViewController: UIViewController {
       let destinationViewController = segue.destinationViewController as! TrackPageViewController
       destinationViewController.startingIndex = indexPath.row
     }
-  }
-
-  override func remoteControlReceivedWithEvent(event: UIEvent?) {
-    guard let e = event else { return }
-    if e.type != UIEventType.RemoteControl { return }
-
-    switch e.subtype {
-    case .RemoteControlPlay:
-      print("remoteControlReceivedWithEvent: play")
-      break
-
-    case .RemoteControlStop, .RemoteControlPause:
-      print("remoteControlReceivedWithEvent: stop/pause")
-      break
-
-    case .RemoteControlNextTrack:
-      print("remoteControlReceivedWithEvent: next")
-      break
-
-    case .RemoteControlPreviousTrack:
-      print("remoteControlReceivedWithEvent: previous")
-      break
-
-    default:
-      break
-    }
-  }
-
-  override func canBecomeFirstResponder() -> Bool {
-    return true
   }
 
   @IBAction func notificationsNoTapped(sender: UIButton) {
@@ -122,6 +106,46 @@ class TrackCollectionViewController: UIViewController {
     }) { (completed) -> Void in
       self.showCollectionView()
     }
+  }
+
+  func pauseTrackCommand(notification: NSNotification) {
+    if Global.isPlaying {
+      Global.isPlaying = false
+      Global.player.pause()
+      setNowPlayingInfo()
+    }
+  }
+
+  func playTrackCommand(notification: NSNotification) {
+    if !Global.isPlaying {
+      if let playerItem = Global.player.currentItem {
+        Global.isPlaying = true
+        if playerItem.currentTime().seconds == 0 {
+          Global.player.play()
+        } else {
+          Global.player.seekToTime(playerItem.currentTime(), completionHandler: { (completed) -> Void in
+            Global.player.play()
+          })
+        }
+        setNowPlayingInfo()
+      }
+    }
+  }
+
+  func setNowPlayingInfo() {
+    guard let playerItem = Global.player.currentItem else { return }
+    let track = Global.tracks[Global.currentIndex]
+    var seconds = playerItem.currentTime().seconds
+    if seconds < 0 {
+      seconds = 0
+    }
+    MPNowPlayingInfoCenter.defaultCenter().nowPlayingInfo = [
+      MPMediaItemPropertyTitle: track["title"].stringValue,
+      MPMediaItemPropertyArtist: track["artist"].stringValue,
+      MPMediaItemPropertyPlaybackDuration: track["duration"].doubleValue / 1000,
+      MPNowPlayingInfoPropertyPlaybackRate: Global.isPlaying ? 1 : 0,
+      MPNowPlayingInfoPropertyElapsedPlaybackTime: seconds,
+    ]
   }
 
   func downloadData() {
@@ -202,6 +226,34 @@ class TrackCollectionViewController: UIViewController {
     UIView.animateWithDuration(0.5, animations: { () -> Void in
       self.collectionView.alpha = 1
     })
+  }
+
+  func handleNextTrackCommand(event: MPRemoteCommandEvent) -> MPRemoteCommandHandlerStatus {
+    print(event.command)
+    return .Success
+  }
+
+  func handlePauseCommand(event: MPRemoteCommandEvent) -> MPRemoteCommandHandlerStatus {
+    if Global.isPlaying {
+      NSNotificationCenter.defaultCenter().postNotificationName(Global.PauseTrackNotification, object: nil)
+      return .Success
+    } else if #available(iOS 9.1, *) {
+        return .NoActionableNowPlayingItem
+    }
+    return .CommandFailed
+  }
+
+  func handlePlayCommand(event: MPRemoteCommandEvent) -> MPRemoteCommandHandlerStatus {
+    if !Global.isPlaying {
+      NSNotificationCenter.defaultCenter().postNotificationName(Global.PlayTrackCommandNotification, object: nil)
+      return .Success
+    }
+    return .CommandFailed
+  }
+
+  func handlePreviousTrackCommand(event: MPRemoteCommandEvent) -> MPRemoteCommandHandlerStatus {
+    print(event.command)
+    return .Success
   }
 
 }

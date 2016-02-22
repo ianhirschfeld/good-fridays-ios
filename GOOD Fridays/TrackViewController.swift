@@ -8,6 +8,7 @@
 
 import AlamofireImage
 import AVFoundation
+import MediaPlayer
 import UIKit
 import SwiftyJSON
 import TTTAttributedLabel
@@ -52,12 +53,12 @@ class TrackViewController: UIViewController {
     trackUploaderLabel.text = "Uploader: \(track["uploader"].stringValue)"
 
     let artworkUrl = NSURL(string: track["artwork_url"].stringValue)!
-    let backgroundArtworkFilter = BlurFilter(blurRadius: 20)
     trackArtImageView.af_setImageWithURL(artworkUrl, placeholderImage: nil, filter: nil, imageTransition: .CrossDissolve(0.3)) { (response) -> Void in
       self.trackArtImageView.layer.shadowColor = UIColor(red: 18.0/255.0, green: 18.0/255.0, blue: 18.0/255.0, alpha: 1).CGColor
       self.trackArtImageView.layer.shadowOpacity = 0.8
       self.trackArtImageView.layer.shadowRadius = 10
     }
+    let backgroundArtworkFilter = BlurFilter(blurRadius: 20)
     trackBackgroundArtImageView.af_setImageWithURL(artworkUrl, placeholderImage: nil, filter: backgroundArtworkFilter, imageTransition: .CrossDissolve(0.3))
     let seconds = track["duration"].doubleValue / 1000
     trackDurationLabel.text = timestamp(seconds)
@@ -150,6 +151,9 @@ class TrackViewController: UIViewController {
     toggleActionView()
 
     NSNotificationCenter.defaultCenter().addObserver(self, selector: "playerItemFinished:", name: AVPlayerItemDidPlayToEndTimeNotification, object: playerItem)
+
+    NSNotificationCenter.defaultCenter().addObserver(self, selector: "pauseTrackCommand:", name: Global.PauseTrackNotification, object: nil)
+    NSNotificationCenter.defaultCenter().addObserver(self, selector: "playTrackCommand:", name: Global.PlayTrackCommandNotification, object: nil)
   }
 
   override func viewDidLayoutSubviews() {
@@ -231,6 +235,18 @@ class TrackViewController: UIViewController {
     }
   }
 
+  func pauseTrackCommand(notification: NSNotification) {
+    if Global.isPlaying {
+      pauseTrack()
+    }
+  }
+
+  func playTrackCommand(notification: NSNotification) {
+    if !Global.isPlaying {
+      playTrack()
+    }
+  }
+
   func playTrack() {
     Global.isPlaying = true
     if playerItem.currentTime().seconds == 0 {
@@ -243,6 +259,7 @@ class TrackViewController: UIViewController {
     playerTimeObserver = Global.player.addPeriodicTimeObserverForInterval(CMTimeMake(1, 10), queue: dispatch_get_main_queue(), usingBlock: { [unowned self] (time) -> Void in
       self.setTimelineAttributes()
     })
+    setNowPlayingInfo()
   }
 
   func pauseTrack() {
@@ -252,6 +269,22 @@ class TrackViewController: UIViewController {
       Global.player.removeTimeObserver(observer)
       playerTimeObserver = nil
     }
+    setNowPlayingInfo()
+  }
+
+  func setNowPlayingInfo() {
+    var seconds = playerItem == nil ? 0 : playerItem.currentTime().seconds
+    if seconds < 0 {
+      seconds = 0
+    }
+    MPNowPlayingInfoCenter.defaultCenter().nowPlayingInfo = [
+      MPMediaItemPropertyTitle: track["title"].stringValue,
+      MPMediaItemPropertyArtist: track["artist"].stringValue,
+      MPMediaItemPropertyArtwork: MPMediaItemArtwork(image: trackArtImageView.image!),
+      MPMediaItemPropertyPlaybackDuration: track["duration"].doubleValue / 1000,
+      MPNowPlayingInfoPropertyPlaybackRate: Global.isPlaying ? 1 : 0,
+      MPNowPlayingInfoPropertyElapsedPlaybackTime: seconds,
+    ]
   }
 
   func togglePlayTrack() {
@@ -307,6 +340,7 @@ class TrackViewController: UIViewController {
         Global.player.play()
       }
       shouldContinuePlaying = false
+      setNowPlayingInfo()
       break
 
     default:
