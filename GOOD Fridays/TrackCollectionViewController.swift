@@ -46,8 +46,6 @@ class TrackCollectionViewController: UIViewController {
     notificationYesButton.layer.borderWidth = 1
     notificationYesButton.layer.cornerRadius = 6
 
-    Global.tracks = [JSON]()
-    Global.playerItems = [AVPlayerItem]()
     shouldDownloadData = true
 
     MPRemoteCommandCenter.sharedCommandCenter().nextTrackCommand.addTarget(self, action: "handleNextTrackCommand:")
@@ -65,14 +63,6 @@ class TrackCollectionViewController: UIViewController {
     } else {
       reloadData()
     }
-
-    NSNotificationCenter.defaultCenter().addObserver(self, selector: "pauseTrackCommand:", name: Global.PauseTrackNotification, object: nil)
-    NSNotificationCenter.defaultCenter().addObserver(self, selector: "playTrackCommand:", name: Global.PlayTrackCommandNotification, object: nil)
-  }
-
-  override func viewDidDisappear(animated: Bool) {
-    super.viewDidDisappear(animated)
-    NSNotificationCenter.defaultCenter().removeObserver(self)
   }
 
   override func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
@@ -108,57 +98,13 @@ class TrackCollectionViewController: UIViewController {
     }
   }
 
-  func pauseTrackCommand(notification: NSNotification) {
-    if Global.isPlaying {
-      Global.isPlaying = false
-      Global.player.pause()
-      setNowPlayingInfo()
-    }
-  }
-
-  func playTrackCommand(notification: NSNotification) {
-    if !Global.isPlaying {
-      if let playerItem = Global.player.currentItem {
-        Global.isPlaying = true
-        if playerItem.currentTime().seconds == 0 {
-          Global.player.play()
-        } else {
-          Global.player.seekToTime(playerItem.currentTime(), completionHandler: { (completed) -> Void in
-            Global.player.play()
-          })
-        }
-        setNowPlayingInfo()
-      }
-    }
-  }
-
-  func setNowPlayingInfo() {
-    guard let playerItem = Global.player.currentItem else { return }
-    let track = Global.tracks[Global.currentIndex]
-    var seconds = playerItem.currentTime().seconds
-    if seconds < 0 {
-      seconds = 0
-    }
-    MPNowPlayingInfoCenter.defaultCenter().nowPlayingInfo = [
-      MPMediaItemPropertyTitle: track["title"].stringValue,
-      MPMediaItemPropertyArtist: track["artist"].stringValue,
-      MPMediaItemPropertyPlaybackDuration: track["duration"].doubleValue / 1000,
-      MPNowPlayingInfoPropertyPlaybackRate: Global.isPlaying ? 1 : 0,
-      MPNowPlayingInfoPropertyElapsedPlaybackTime: seconds,
-    ]
-  }
-
   func downloadData() {
     Alamofire.request(.GET, "\(baseUrl)/tracks_v2.json").validate().responseJSON { [unowned self] response in
       switch response.result {
       case .Success:
         if let value = response.result.value {
-          Global.tracks = JSON(value).arrayValue
-          for track in Global.tracks {
-            let trackUrl = NSURL(string: track["stream_url"].stringValue)!
-            let playerItem = AVPlayerItem(URL: trackUrl)
-            Global.playerItems.append(playerItem)
-          }
+          Global.trackManager.tracks = JSON(value).arrayValue
+          Global.trackManager.setupPlayerItems()
           self.startUp()
         }
       case .Failure(let error):
@@ -172,15 +118,10 @@ class TrackCollectionViewController: UIViewController {
       switch response.result {
       case .Success:
         if let value = response.result.value {
-          if JSON(value).arrayValue.count != Global.tracks.count {
-            Global.player.replaceCurrentItemWithPlayerItem(nil)
-            Global.playerItems.removeAll()
-            Global.tracks = JSON(value).arrayValue
-            for track in Global.tracks {
-              let trackUrl = NSURL(string: track["stream_url"].stringValue)!
-              let playerItem = AVPlayerItem(URL: trackUrl)
-              Global.playerItems.append(playerItem)
-            }
+          if JSON(value).arrayValue.count != Global.trackManager.tracks.count {
+            Global.trackManager.stop()
+            Global.trackManager.tracks = JSON(value).arrayValue
+            Global.trackManager.setupPlayerItems()
             self.collectionView.reloadData()
           }
         }
@@ -229,13 +170,16 @@ class TrackCollectionViewController: UIViewController {
   }
 
   func handleNextTrackCommand(event: MPRemoteCommandEvent) -> MPRemoteCommandHandlerStatus {
-    print(event.command)
-    return .Success
+    if Global.trackManager.currentIndex + 1 <= Global.trackManager.tracks.count - 1 {
+      Global.trackManager.next()
+      return .Success
+    }
+    return .CommandFailed
   }
 
   func handlePauseCommand(event: MPRemoteCommandEvent) -> MPRemoteCommandHandlerStatus {
-    if Global.isPlaying {
-      NSNotificationCenter.defaultCenter().postNotificationName(Global.PauseTrackNotification, object: nil)
+    if Global.trackManager.isPlaying {
+      Global.trackManager.pause()
       return .Success
     } else if #available(iOS 9.1, *) {
         return .NoActionableNowPlayingItem
@@ -244,16 +188,22 @@ class TrackCollectionViewController: UIViewController {
   }
 
   func handlePlayCommand(event: MPRemoteCommandEvent) -> MPRemoteCommandHandlerStatus {
-    if !Global.isPlaying {
-      NSNotificationCenter.defaultCenter().postNotificationName(Global.PlayTrackCommandNotification, object: nil)
+    if !Global.trackManager.isPlaying {
+      Global.trackManager.play()
       return .Success
     }
     return .CommandFailed
   }
 
   func handlePreviousTrackCommand(event: MPRemoteCommandEvent) -> MPRemoteCommandHandlerStatus {
-    print(event.command)
-    return .Success
+    if Global.trackManager.currentPlayerItem().currentTime().seconds >= 10 {
+      Global.trackManager.seekTo(0)
+      return .Success
+    } else if Global.trackManager.currentIndex - 1 >= 0 {
+      Global.trackManager.previous()
+      return .Success
+    }
+    return .CommandFailed
   }
 
 }
@@ -273,12 +223,12 @@ extension TrackCollectionViewController: UICollectionViewDelegateFlowLayout {
 extension TrackCollectionViewController: UICollectionViewDataSource {
 
   func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-    return Global.tracks.count
+    return Global.trackManager.tracks.count
   }
 
   func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
     let cell = collectionView.dequeueReusableCellWithReuseIdentifier("TrackCollectionViewCell", forIndexPath: indexPath) as! TrackCollectionViewCell
-    let track = Global.tracks[indexPath.row]
+    let track = Global.trackManager.tracks[indexPath.row]
 
     if let artworkUrl = NSURL(string: track["artwork_url"].stringValue) {
       cell.trackArtImageView.af_setImageWithURL(artworkUrl, imageTransition: .CrossDissolve(0.3))

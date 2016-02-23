@@ -22,7 +22,8 @@ class TrackPageViewController: UIPageViewController {
 
     let index = startingIndex != nil ? startingIndex! : 0
     if let startingTrackViewController = viewControllerAtIndex(index) {
-      Global.shouldAutoPlay = true
+      Global.trackManager.currentIndex = index
+      Global.trackManager.play()
       setViewControllers([startingTrackViewController], direction: .Reverse, animated: false, completion: nil)
     }
 
@@ -32,25 +33,27 @@ class TrackPageViewController: UIPageViewController {
   }
 
   func viewControllerAtIndex(index: Int) -> TrackViewController? {
-    if index < 0 || index >= Global.tracks.count { return nil }
+    if index < 0 || index >= Global.trackManager.tracks.count { return nil }
     let trackViewController = storyboard?.instantiateViewControllerWithIdentifier("TrackViewController") as! TrackViewController
     trackViewController.delegate = self
-    trackViewController.track = Global.tracks[index]
-    Global.currentIndex = index
+    trackViewController.track = Global.trackManager.tracks[index]
+    trackViewController.playerItem = Global.trackManager.playerItems[index]
     return trackViewController
   }
 
   func goToNextPage() {
     guard let currentViewController = viewControllers?[0] as? TrackViewController else { return }
-    guard let index = Global.tracks.indexOf({ $0["id"].numberValue == currentViewController.track["id"].numberValue }) else { return }
+    guard let index = Global.trackManager.getTrackIndex(currentViewController.track) else { return }
     guard let viewController = viewControllerAtIndex(index + 1) else { return }
+    Global.trackManager.next()
     setViewControllers([viewController], direction: .Forward, animated: true, completion: nil)
   }
 
   func goToPreviousPage() {
     guard let currentViewController = viewControllers?[0] as? TrackViewController else { return }
-    guard let index = Global.tracks.indexOf({ $0["id"].numberValue == currentViewController.track["id"].numberValue }) else { return }
+    guard let index = Global.trackManager.getTrackIndex(currentViewController.track) else { return }
     guard let viewController = viewControllerAtIndex(index - 1) else { return }
+    Global.trackManager.previous()
     setViewControllers([viewController], direction: .Reverse, animated: true, completion: nil)
   }
 
@@ -66,13 +69,13 @@ extension TrackPageViewController: UIPageViewControllerDataSource {
 
   func pageViewController(pageViewController: UIPageViewController, viewControllerBeforeViewController viewController: UIViewController) -> UIViewController? {
     let currentViewController = viewController as! TrackViewController
-    guard let index = Global.tracks.indexOf({ $0["id"].numberValue == currentViewController.track["id"].numberValue }) else { return nil }
+    guard let index = Global.trackManager.getTrackIndex(currentViewController.track) else { return nil }
     return viewControllerAtIndex(index - 1)
   }
 
   func pageViewController(pageViewController: UIPageViewController, viewControllerAfterViewController viewController: UIViewController) -> UIViewController? {
     let currentViewController = viewController as! TrackViewController
-    guard let index = Global.tracks.indexOf({ $0["id"].numberValue == currentViewController.track["id"].numberValue }) else { return nil }
+    guard let index = Global.trackManager.getTrackIndex(currentViewController.track) else { return nil }
     return viewControllerAtIndex(index + 1)
   }
 

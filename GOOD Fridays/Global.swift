@@ -14,17 +14,13 @@ struct Global {
 
   static let HasAskedForNotificationsKey = "HasAskedForNotificationsKey"
 
-  static let PauseTrackNotification = "PauseTrackNotification"
-  static let PlayTrackCommandNotification = "PlayTrackCommandNotification"
+  static let NextNotification = "NextNotification"
+  static let PauseNotification = "PauseNotification"
+  static let PlayerItemTickNotification = "PlayerItemTickNotification"
+  static let PlayNotification = "PlayNotification"
+  static let PreviousNotification = "PreviousNotification"
 
   static var defaults = NSUserDefaults.standardUserDefaults()
-
-  static var player = AVPlayer()
-  static var playerItems = [AVPlayerItem]()
-  static var tracks = [JSON]()
-  static var currentIndex = 0
-
-  static var isPlaying = false
-  static var shouldAutoPlay = false
+  static var trackManager = TrackManager()
 
 }

@@ -243,7 +243,7 @@
                                     <view alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="u9t-0p-zi4">
                                         <rect key="frame" x="0.0" y="0.0" width="600" height="800"/>
                                         <subviews>
-                                            <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="89n-Kh-RwR">
+                                            <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="89n-Kh-RwR" customClass="PlayerButton" customModule="GOOD_Fridays" customModuleProvider="target">
                                                 <rect key="frame" x="250" y="270" width="100" height="100"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="100" id="Y7J-iN-klG"/>
@@ -252,7 +252,7 @@
                                                 <inset key="contentEdgeInsets" minX="33" minY="30" maxX="27" maxY="30"/>
                                                 <state key="normal" image="play"/>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5R8-U6-508">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5R8-U6-508" customClass="PlayerButton" customModule="GOOD_Fridays" customModuleProvider="target">
                                                 <rect key="frame" x="390" y="295" width="50" height="50"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="50" id="Vme-Xs-mDT"/>
@@ -264,7 +264,7 @@
                                                     <action selector="nextButtonTapped:" destination="Bfi-ez-Idg" eventType="touchUpInside" id="n1O-GR-BWX"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HtM-b0-y2P">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HtM-b0-y2P" customClass="PlayerButton" customModule="GOOD_Fridays" customModuleProvider="target">
                                                 <rect key="frame" x="160" y="295" width="50" height="50"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="50" id="LuV-8P-OPH"/>
