@@ -246,7 +246,8 @@ class TrackViewController: UIViewController {
       trackProgressLabel.text = timestamp(seconds)
       Global.trackManager.seekTo(seconds)
       if shouldContinuePlaying {
-        Global.trackManager.play()
+        // Delay needed to let the AVPlayerItem properly seek before resuming play.
+        NSTimer.scheduledTimerWithTimeInterval(0.2, target: Global.trackManager, selector: "play", userInfo: nil, repeats: false)
       }
       shouldContinuePlaying = false
       break
