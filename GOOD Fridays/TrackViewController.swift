@@ -131,6 +131,7 @@ class TrackViewController: UIViewController {
 
     NSNotificationCenter.defaultCenter().addObserver(self, selector: "next:", name: Global.NextNotification, object: nil)
     NSNotificationCenter.defaultCenter().addObserver(self, selector: "playerItemTick:", name: Global.PlayerItemTickNotification, object: playerItem)
+    NSNotificationCenter.defaultCenter().addObserver(self, selector: "previous:", name: Global.PreviousNotification, object: nil)
   }
 
   override func viewDidDisappear(animated: Bool) {
@@ -190,6 +191,12 @@ class TrackViewController: UIViewController {
 
   func playerItemTick(notification: NSNotification) {
     setTimelineAttributes()
+  }
+
+  func previous(notification: NSNotification) {
+    if Global.trackManager.currentIndex < index {
+      delegate.goToPreviousPage()
+    }
   }
 
   func togglePlayTrack() {
