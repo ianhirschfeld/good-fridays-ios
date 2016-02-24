@@ -25,6 +25,9 @@ class TrackManager: NSObject {
 
   override init() {
     super.init()
+
+    NSNotificationCenter.defaultCenter().addObserver(self, selector: "audioSessionInterrupted:", name: AVAudioSessionInterruptionNotification, object: nil)
+    NSNotificationCenter.defaultCenter().addObserver(self, selector: "audioSessionRouteChanged:", name: AVAudioSessionRouteChangeNotification, object: nil)
     NSNotificationCenter.defaultCenter().addObserver(self, selector: "playerItemFinished:", name: AVPlayerItemDidPlayToEndTimeNotification, object: nil)
   }
 
@@ -158,6 +161,26 @@ class TrackManager: NSObject {
     player.replaceCurrentItemWithPlayerItem(nil)
     playerItems.removeAll()
     MPNowPlayingInfoCenter.defaultCenter().nowPlayingInfo = nil
+  }
+
+  func audioSessionInterrupted(notification: NSNotification) {
+    guard let userInfo = notification.userInfo else { return }
+    guard let interruptionInt = userInfo[AVAudioSessionInterruptionTypeKey] as? UInt else { return }
+    guard let interruptionType = AVAudioSessionInterruptionType(rawValue: interruptionInt) else { return }
+
+    switch interruptionType {
+    case .Began:
+      pause()
+      break
+
+    case .Ended:
+      play()
+      break
+    }
+  }
+
+  func audioSessionRouteChanged(notification: NSNotification) {
+    pause()
   }
 
   func playerItemFinished(notification: NSNotification) {
