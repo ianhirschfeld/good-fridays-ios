@@ -123,22 +123,24 @@ class TrackManager: NSObject {
     NSNotificationCenter.defaultCenter().postNotificationName(Global.PauseNotification, object: nil)
   }
 
-  // TODO: Make this take an autoplay bool argument
-  func next() {
+  func next(autoplay: Bool) {
     pause()
     if currentIndex + 1 <= tracks.count - 1 {
       currentIndex++
-      play()
+      if autoplay {
+        play()
+      }
       NSNotificationCenter.defaultCenter().postNotificationName(Global.NextNotification, object: nil)
     }
   }
 
-  // TODO: Make this take an autoplay bool argument
-  func previous() {
+  func previous(autoplay: Bool) {
     pause()
     if currentIndex - 1 >= 0 {
       currentIndex--
-      play()
+      if autoplay {
+        play()
+      }
       NSNotificationCenter.defaultCenter().postNotificationName(Global.PreviousNotification, object: nil)
     }
   }
@@ -161,7 +163,7 @@ class TrackManager: NSObject {
     if currentIndex < playerItems.count - 1 {
       pause()
       seekTo(0)
-      next()
+      next(true)
     } else {
       pause()
       for item in playerItems {

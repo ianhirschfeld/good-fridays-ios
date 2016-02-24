@@ -171,7 +171,9 @@ class TrackCollectionViewController: UIViewController {
 
   func handleNextTrackCommand(event: MPRemoteCommandEvent) -> MPRemoteCommandHandlerStatus {
     if Global.trackManager.currentIndex + 1 <= Global.trackManager.tracks.count - 1 {
-      Global.trackManager.next()
+      if Global.trackManager.tracks[Global.trackManager.currentIndex + 1]["streamable"].boolValue {
+        Global.trackManager.next(Global.trackManager.isPlaying)
+      }
       return .Success
     }
     return .CommandFailed
@@ -200,7 +202,9 @@ class TrackCollectionViewController: UIViewController {
       Global.trackManager.seekTo(0)
       return .Success
     } else if Global.trackManager.currentIndex - 1 >= 0 {
-      Global.trackManager.previous()
+      if Global.trackManager.tracks[Global.trackManager.currentIndex - 1]["streamable"].boolValue {
+        Global.trackManager.previous(Global.trackManager.isPlaying)
+      }
       return .Success
     }
     return .CommandFailed

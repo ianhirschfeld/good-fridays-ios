@@ -130,6 +130,8 @@ class TrackViewController: UIViewController {
     toggleActionView()
 
     NSNotificationCenter.defaultCenter().addObserver(self, selector: "next:", name: Global.NextNotification, object: nil)
+    NSNotificationCenter.defaultCenter().addObserver(self, selector: "togglePlayPause:", name: Global.PauseNotification, object: nil)
+    NSNotificationCenter.defaultCenter().addObserver(self, selector: "togglePlayPause:", name: Global.PlayNotification, object: nil)
     NSNotificationCenter.defaultCenter().addObserver(self, selector: "playerItemTick:", name: Global.PlayerItemTickNotification, object: playerItem)
     NSNotificationCenter.defaultCenter().addObserver(self, selector: "previous:", name: Global.PreviousNotification, object: nil)
   }
@@ -196,6 +198,12 @@ class TrackViewController: UIViewController {
   func previous(notification: NSNotification) {
     if Global.trackManager.currentIndex < index {
       delegate.goToPreviousPage()
+    }
+  }
+
+  func togglePlayPause(notification: NSNotification) {
+    if Global.trackManager.currentTrack() == track {
+      toggleActionView()
     }
   }
 
