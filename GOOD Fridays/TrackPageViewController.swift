@@ -45,7 +45,6 @@ class TrackPageViewController: UIPageViewController {
     guard let currentViewController = viewControllers?[0] as? TrackViewController else { return }
     guard let index = Global.trackManager.getTrackIndex(currentViewController.track) else { return }
     guard let viewController = viewControllerAtIndex(index + 1) else { return }
-    Global.trackManager.next()
     setViewControllers([viewController], direction: .Forward, animated: true, completion: nil)
   }
 
@@ -53,7 +52,6 @@ class TrackPageViewController: UIPageViewController {
     guard let currentViewController = viewControllers?[0] as? TrackViewController else { return }
     guard let index = Global.trackManager.getTrackIndex(currentViewController.track) else { return }
     guard let viewController = viewControllerAtIndex(index - 1) else { return }
-    Global.trackManager.previous()
     setViewControllers([viewController], direction: .Reverse, animated: true, completion: nil)
   }
 

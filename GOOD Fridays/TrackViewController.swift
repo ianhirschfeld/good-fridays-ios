@@ -38,7 +38,6 @@ class TrackViewController: UIViewController {
 
   weak var delegate: TrackPageViewController!
   var playerItem: AVPlayerItem!
-  var playerTimeObserver: AnyObject?
   var shouldContinuePlaying = false
   var track: JSON!
 
@@ -117,8 +116,19 @@ class TrackViewController: UIViewController {
 
   override func viewDidAppear(animated: Bool) {
     super.viewDidAppear(animated)
-    // TODO: Make this always try to switch to this song
+
+    if Global.trackManager.currentTrack() != track && track["streamable"].boolValue {
+      shouldContinuePlaying = Global.trackManager.isPlaying
+      Global.trackManager.pause()
+      Global.trackManager.currentIndex = index
+      if shouldContinuePlaying {
+        shouldContinuePlaying = false
+        Global.trackManager.play()
+      }
+    }
+
     toggleActionView()
+
     NSNotificationCenter.defaultCenter().addObserver(self, selector: "playerItemTick:", name: Global.PlayerItemTickNotification, object: playerItem)
   }
 

@@ -54,7 +54,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   }
 
   func application(application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: NSError) {
-    // TODO: Fill out if I want to handle this...
+    // Fill out if I want to handle this...
   }
 
   func application(application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: NSData) {
@@ -62,7 +62,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   }
 
   func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject]) {
-    // TODO: Fill this out if I want to get fancy...
+    // Fill this out if I want to get fancy...
   }
 
 }
