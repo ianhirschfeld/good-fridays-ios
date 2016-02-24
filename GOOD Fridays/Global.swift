@@ -14,6 +14,7 @@ struct Global {
 
   static let HasAskedForNotificationsKey = "HasAskedForNotificationsKey"
 
+  static let PlaylistOverNotification = "PlaylistOverNotification"
   static let NextNotification = "NextNotification"
   static let PauseNotification = "PauseNotification"
   static let PlayerItemTickNotification = "PlayerItemTickNotification"

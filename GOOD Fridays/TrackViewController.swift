@@ -129,7 +129,13 @@ class TrackViewController: UIViewController {
 
     toggleActionView()
 
+    NSNotificationCenter.defaultCenter().addObserver(self, selector: "next:", name: Global.NextNotification, object: nil)
     NSNotificationCenter.defaultCenter().addObserver(self, selector: "playerItemTick:", name: Global.PlayerItemTickNotification, object: playerItem)
+  }
+
+  override func viewDidDisappear(animated: Bool) {
+    super.viewDidDisappear(animated)
+    NSNotificationCenter.defaultCenter().removeObserver(self)
   }
 
   override func viewDidLayoutSubviews() {
@@ -156,10 +162,6 @@ class TrackViewController: UIViewController {
     }
   }
 
-  deinit {
-    NSNotificationCenter.defaultCenter().removeObserver(self)
-  }
-
   @IBAction func playButtonTapped(sender: UIButton) {
     togglePlayTrack()
   }
@@ -180,30 +182,18 @@ class TrackViewController: UIViewController {
     }
   }
 
-  // TODO: Do something with this
-//  func playerItemFinished(notification: NSNotification) {
-//    if index < Global.playerItems.count - 1 {
-//      togglePlayTrack()
-//      let time = CMTime(seconds: 0, preferredTimescale: playerItem.currentTime().timescale)
-//      playerItem.seekToTime(time)
-//      Global.shouldAutoPlay = true
-//      delegate.goToNextPage()
-//    } else {
-//      togglePlayTrack()
-//      for item in Global.playerItems {
-//        let time = CMTime(seconds: 0, preferredTimescale: item.currentTime().timescale)
-//        item.seekToTime(time)
-//      }
-//      dismissViewControllerAnimated(true, completion: nil)
-//    }
-//  }
-
-  func togglePlayTrack() {
-    Global.trackManager.togglePlayPause()
+  func next(notification: NSNotification) {
+    if Global.trackManager.currentIndex > index {
+      delegate.goToNextPage()
+    }
   }
 
   func playerItemTick(notification: NSNotification) {
     setTimelineAttributes()
+  }
+
+  func togglePlayTrack() {
+    Global.trackManager.togglePlayPause()
   }
 
   func toggleActionView() {

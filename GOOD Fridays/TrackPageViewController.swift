@@ -32,6 +32,16 @@ class TrackPageViewController: UIPageViewController {
     view.addGestureRecognizer(swipeGesture)
   }
 
+  override func viewDidAppear(animated: Bool) {
+    super.viewDidAppear(animated)
+    NSNotificationCenter.defaultCenter().addObserver(self, selector: "playlistOver:", name: Global.PlaylistOverNotification, object: nil)
+  }
+
+  override func viewDidDisappear(animated: Bool) {
+    super.viewDidDisappear(animated)
+    NSNotificationCenter.defaultCenter().removeObserver(self)
+  }
+
   func viewControllerAtIndex(index: Int) -> TrackViewController? {
     if index < 0 || index >= Global.trackManager.tracks.count { return nil }
     let trackViewController = storyboard?.instantiateViewControllerWithIdentifier("TrackViewController") as! TrackViewController
@@ -56,6 +66,10 @@ class TrackPageViewController: UIPageViewController {
   }
 
   func viewSwiped(gesture: UISwipeGestureRecognizer) {
+    dismissViewControllerAnimated(true, completion: nil)
+  }
+
+  func playlistOver(notification: NSNotification) {
     dismissViewControllerAnimated(true, completion: nil)
   }
 

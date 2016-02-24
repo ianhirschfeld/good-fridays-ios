@@ -12,7 +12,7 @@ import MediaPlayer
 import UIKit
 import SwiftyJSON
 
-class TrackManager {
+class TrackManager: NSObject {
 
   var currentIndex = 0
   var isPlaying = false
@@ -22,7 +22,8 @@ class TrackManager {
   var shouldAutoPlay = false
   var tracks = [JSON]()
 
-  init () {
+  override init() {
+    super.init()
     NSNotificationCenter.defaultCenter().addObserver(self, selector: "playerItemFinished:", name: AVPlayerItemDidPlayToEndTimeNotification, object: nil)
   }
 
@@ -157,7 +158,18 @@ class TrackManager {
   }
 
   func playerItemFinished(notification: NSNotification) {
-    // TODO: Handle end of track
+    if currentIndex < playerItems.count - 1 {
+      pause()
+      seekTo(0)
+      next()
+    } else {
+      pause()
+      for item in playerItems {
+        let time = CMTime(seconds: 0, preferredTimescale: item.currentTime().timescale)
+        item.seekToTime(time)
+      }
+      NSNotificationCenter.defaultCenter().postNotificationName(Global.PlaylistOverNotification, object: nil)
+    }
   }
 
 }
