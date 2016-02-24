@@ -6,6 +6,7 @@
 //  Copyright © 2016 The Soap Collective. All rights reserved.
 //
 
+import Alamofire
 import AlamofireImage
 import AVFoundation
 import MediaPlayer
@@ -52,21 +53,22 @@ class TrackManager: NSObject {
     let playerItem = currentPlayerItem()
     let track = currentTrack()
     let seconds = playerItem.currentTime().seconds < 0 ? 0 : playerItem.currentTime().seconds
+    let nowPlayingInfo = MPNowPlayingInfoCenter.defaultCenter().nowPlayingInfo
 
-    MPNowPlayingInfoCenter.defaultCenter().nowPlayingInfo = [
-      MPMediaItemPropertyTitle: track["title"].stringValue,
-      MPMediaItemPropertyArtist: track["artist"].stringValue,
-      MPMediaItemPropertyPlaybackDuration: track["duration"].doubleValue / 1000,
-      MPNowPlayingInfoPropertyPlaybackRate: isPlaying ? 1 : 0,
-      MPNowPlayingInfoPropertyElapsedPlaybackTime: seconds,
-    ]
+    if nowPlayingInfo == nil || (nowPlayingInfo![MPMediaItemPropertyTitle] as! String) != track["title"].stringValue {
+      MPNowPlayingInfoCenter.defaultCenter().nowPlayingInfo = [
+        MPMediaItemPropertyTitle: track["title"].stringValue,
+        MPMediaItemPropertyArtist: track["artist"].stringValue,
+        MPMediaItemPropertyPlaybackDuration: track["duration"].doubleValue / 1000,
+        MPNowPlayingInfoPropertyPlaybackRate: isPlaying ? 1 : 0,
+        MPNowPlayingInfoPropertyElapsedPlaybackTime: seconds,
+      ]
 
-    if let artworkUrl = NSURL(string: track["artwork_url"].stringValue) {
-      let downloader = ImageDownloader()
-      let URLRequest = NSURLRequest(URL: artworkUrl)
-      downloader.downloadImage(URLRequest: URLRequest) { response in
-        if let image = response.result.value {
-          MPNowPlayingInfoCenter.defaultCenter().nowPlayingInfo?[MPMediaItemPropertyArtwork] = MPMediaItemArtwork(image: image)
+      if let artworkUrl = track["artwork_url"].string {
+        Alamofire.request(.GET, artworkUrl).responseImage { response in
+          if let image = response.result.value {
+            MPNowPlayingInfoCenter.defaultCenter().nowPlayingInfo?[MPMediaItemPropertyArtwork] = MPMediaItemArtwork(image: image)
+          }
         }
       }
     }
@@ -119,7 +121,6 @@ class TrackManager: NSObject {
     player.pause()
     isPlaying = false
     removePlayerTimeObserver()
-    setNowPlayingInfo()
     NSNotificationCenter.defaultCenter().postNotificationName(Global.PauseNotification, object: nil)
   }
 
