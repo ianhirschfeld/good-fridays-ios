@@ -19,6 +19,8 @@
 		653057661C4F77250067A1A3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 653057641C4F77250067A1A3 /* LaunchScreen.storyboard */; };
 		653057711C4F77250067A1A3 /* GOOD_FridaysTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 653057701C4F77250067A1A3 /* GOOD_FridaysTests.swift */; };
 		6530577C1C4F77250067A1A3 /* GOOD_FridaysUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6530577B1C4F77250067A1A3 /* GOOD_FridaysUITests.swift */; };
+		653C28611C7AD96F00114D5C /* TrackManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 653C28601C7AD96F00114D5C /* TrackManager.swift */; };
+		653C28671C7C1D0F00114D5C /* PlayerButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 653C28661C7C1D0F00114D5C /* PlayerButton.swift */; };
 		65EE70461C5711C900E377CC /* Global.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65EE70451C5711C900E377CC /* Global.swift */; };
 		A324159E8C17CEA2DBD71333 /* Pods_GOOD_Fridays.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B3E81355766822F715A5DF9 /* Pods_GOOD_Fridays.framework */; };
 /* End PBXBuildFile section */
@@ -62,6 +64,8 @@
 		653057771C4F77250067A1A3 /* GOOD FridaysUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "GOOD FridaysUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6530577B1C4F77250067A1A3 /* GOOD_FridaysUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GOOD_FridaysUITests.swift; sourceTree = "<group>"; };
 		6530577D1C4F77250067A1A3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		653C28601C7AD96F00114D5C /* TrackManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrackManager.swift; sourceTree = "<group>"; };
+		653C28661C7C1D0F00114D5C /* PlayerButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerButton.swift; sourceTree = "<group>"; };
 		65774A8A1C5B777E000651D4 /* GOOD-Fridays-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "GOOD-Fridays-Bridging-Header.h"; sourceTree = "<group>"; };
 		65EE70451C5711C900E377CC /* Global.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Global.swift; sourceTree = "<group>"; };
 		7EAFA7309F760FFE21BE9826 /* Pods-GOOD FridaysTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GOOD FridaysTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GOOD FridaysTests/Pods-GOOD FridaysTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -135,6 +139,7 @@
 			isa = PBXGroup;
 			children = (
 				6515EC141C57497600783D35 /* CollectionViewCells */,
+				653C28661C7C1D0F00114D5C /* PlayerButton.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -174,8 +179,9 @@
 			children = (
 				6515EC131C57496F00783D35 /* Views */,
 				6515EC101C57434E00783D35 /* ViewControllers */,
-				65EE70451C5711C900E377CC /* Global.swift */,
 				6530575B1C4F77240067A1A3 /* AppDelegate.swift */,
+				65EE70451C5711C900E377CC /* Global.swift */,
+				653C28601C7AD96F00114D5C /* TrackManager.swift */,
 				6530575F1C4F77250067A1A3 /* Main.storyboard */,
 				653057621C4F77250067A1A3 /* Assets.xcassets */,
 				653057641C4F77250067A1A3 /* LaunchScreen.storyboard */,
@@ -490,9 +496,11 @@
 			files = (
 				65EE70461C5711C900E377CC /* Global.swift in Sources */,
 				6516BBCF1C50636E005F6C83 /* TrackPageViewController.swift in Sources */,
+				653C28611C7AD96F00114D5C /* TrackManager.swift in Sources */,
 				6515EC121C57444B00783D35 /* TrackCollectionViewController.swift in Sources */,
 				6516BBD11C5065A8005F6C83 /* TrackViewController.swift in Sources */,
 				6515EC161C5749CD00783D35 /* TrackCollectionViewCell.swift in Sources */,
+				653C28671C7C1D0F00114D5C /* PlayerButton.swift in Sources */,
 				6530575C1C4F77240067A1A3 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
