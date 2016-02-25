@@ -250,7 +250,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="800"/>
                                 <color key="backgroundColor" red="0.1529411765" green="0.1529411765" blue="0.1529411765" alpha="0.59999999999999998" colorSpace="calibratedRGB"/>
                             </view>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="XZ7-kw-4RI">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="XZ7-kw-4RI" customClass="ParallaxImageView" customModule="GOOD_Fridays" customModuleProvider="target">
                                 <rect key="frame" x="20" y="40" width="560" height="560"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="XZ7-kw-4RI" secondAttribute="height" multiplier="1:1" priority="999" id="DeI-ki-wzU"/>

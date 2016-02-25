@@ -20,7 +20,7 @@ class TrackViewController: UIViewController {
   @IBOutlet weak var nextButton: UIButton!
   @IBOutlet weak var playButton: UIButton!
   @IBOutlet weak var previousButton: UIButton!
-  @IBOutlet weak var trackArtImageView: UIImageView!
+  @IBOutlet weak var trackArtImageView: ParallaxImageView!
   @IBOutlet weak var trackArtistLabel: UILabel!
   @IBOutlet weak var trackBackgroundArtImageView: UIImageView!
   @IBOutlet weak var trackDurationLabel: UILabel!
@@ -131,6 +131,8 @@ class TrackViewController: UIViewController {
 
     toggleActionView()
 
+    trackArtImageView.addParallax(-30)
+
     NSNotificationCenter.defaultCenter().addObserver(self, selector: "next:", name: Global.NextNotification, object: nil)
     NSNotificationCenter.defaultCenter().addObserver(self, selector: "togglePlayPause:", name: Global.PauseNotification, object: nil)
     NSNotificationCenter.defaultCenter().addObserver(self, selector: "togglePlayPause:", name: Global.PlayNotification, object: nil)
@@ -140,6 +142,7 @@ class TrackViewController: UIViewController {
 
   override func viewDidDisappear(animated: Bool) {
     super.viewDidDisappear(animated)
+    trackArtImageView.removeParallax()
     NSNotificationCenter.defaultCenter().removeObserver(self)
   }
 
