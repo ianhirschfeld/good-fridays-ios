@@ -21,6 +21,7 @@ class TrackViewController: UIViewController {
   @IBOutlet weak var playButton: UIButton!
   @IBOutlet weak var previousButton: UIButton!
   @IBOutlet weak var trackArtImageView: UIImageView!
+  @IBOutlet weak var trackArtistLabel: UILabel!
   @IBOutlet weak var trackBackgroundArtImageView: UIImageView!
   @IBOutlet weak var trackDurationLabel: UILabel!
   @IBOutlet weak var trackNotStreamableLabel: TTTAttributedLabel!
@@ -59,10 +60,11 @@ class TrackViewController: UIViewController {
 
     trackSourceLabel.text = "Source: \(track["source"].stringValue)"
     trackUploaderLabel.text = "Uploader: \(track["uploader"].stringValue)"
+    trackTitleLabel.text = track["title"].stringValue
+    trackArtistLabel.text = track["artist"].stringValue
+    trackProgressLabel.text = "0:00"
     let seconds = track["duration"].doubleValue / 1000
     trackDurationLabel.text = timestamp(seconds)
-    trackProgressLabel.text = "0:00"
-    trackTitleLabel.text = track["title"].stringValue
 
     if index >= Global.trackManager.tracks.count - 1 {
       nextButton.enabled = false
