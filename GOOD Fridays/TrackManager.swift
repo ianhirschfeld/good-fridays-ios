@@ -23,6 +23,14 @@ class TrackManager: NSObject {
   var shouldAutoPlay = false
   var tracks = [JSON]()
 
+  var officialTracks: [JSON] {
+    return Global.trackManager.tracks.filter({ $0["type"].stringValue == "official" })
+  }
+
+  var remixTracks: [JSON] {
+    return Global.trackManager.tracks.filter({ $0["type"].stringValue == "remix" })
+  }
+
   override init() {
     super.init()
 

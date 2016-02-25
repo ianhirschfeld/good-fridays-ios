@@ -74,8 +74,12 @@ class TrackCollectionViewController: UIViewController {
   override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
     if segue.identifier == "TrackCollectionToTrackPage" {
       let indexPath = sender as! NSIndexPath
+      var index = indexPath.row
+      if indexPath.section == 1 {
+        index += Global.trackManager.officialTracks.count
+      }
       let destinationViewController = segue.destinationViewController as! TrackPageViewController
-      destinationViewController.startingIndex = indexPath.row
+      destinationViewController.startingIndex = index
     }
   }
 
@@ -226,13 +230,29 @@ extension TrackCollectionViewController: UICollectionViewDelegateFlowLayout {
 
 extension TrackCollectionViewController: UICollectionViewDataSource {
 
+  func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
+    return 2
+  }
+
   func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-    return Global.trackManager.tracks.count
+    return section == 0 ? Global.trackManager.officialTracks.count : Global.trackManager.remixTracks.count
+  }
+
+  func collectionView(collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, atIndexPath indexPath: NSIndexPath) -> UICollectionReusableView {
+    let view = collectionView.dequeueReusableSupplementaryViewOfKind(UICollectionElementKindSectionHeader, withReuseIdentifier: "SectionHeaderView", forIndexPath: indexPath)
+    let titleLabel = view.viewWithTag(10) as! UILabel
+    titleLabel.text = indexPath.section == 0 ? "Tracks by Kanye West" : "Remixes by Others"
+    return view
   }
 
   func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
     let cell = collectionView.dequeueReusableCellWithReuseIdentifier("TrackCollectionViewCell", forIndexPath: indexPath) as! TrackCollectionViewCell
-    let track = Global.trackManager.tracks[indexPath.row]
+
+    var index = indexPath.row
+    if indexPath.section == 1 {
+      index += Global.trackManager.officialTracks.count
+    }
+    let track = Global.trackManager.tracks[index]
 
     if let artworkUrl = NSURL(string: track["artwork_url"].stringValue) {
       cell.trackArtImageView.af_setImageWithURL(artworkUrl, imageTransition: .CrossDissolve(0.3))
@@ -243,20 +263,6 @@ extension TrackCollectionViewController: UICollectionViewDataSource {
 
   func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
     performSegueWithIdentifier("TrackCollectionToTrackPage", sender: indexPath)
-  }
-
-}
-
-extension TrackCollectionViewController: AVAudioSessionDelegate {
-
-  func beginInterruption() {
-    // TODO:
-    print("beginInterruption")
-  }
-
-  func endInterruption() {
-    // TODO:
-    print("endInterruption")
   }
 
 }
