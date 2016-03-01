@@ -2,7 +2,7 @@ PODS:
   - Alamofire (3.1.5)
   - AlamofireImage (2.3.0):
     - Alamofire (~> 3.1)
-  - Crashlytics (3.6.0):
+  - Crashlytics (3.7.0):
     - Fabric (~> 1.6.3)
   - Fabric (1.6.4)
   - Mixpanel (2.9.2):
@@ -23,7 +23,7 @@ DEPENDENCIES:
 SPEC CHECKSUMS:
   Alamofire: 5f730ba29fd113b7ddd71c1e65d0c630acf5d7b0
   AlamofireImage: 4013fb5b99b10117bf2554a67b9bd2231d476b45
-  Crashlytics: e4e8d02914f2608fbc7bf42b1a7af838b0db67a2
+  Crashlytics: c3a2333dea9e2733d2777f730910321fc9e25c0d
   Fabric: ed41fd62173c6bdea24ab02c9d7707161eabb750
   Mixpanel: 62a6b9904e97d5d3043c12a062deb408b2b9755f
   SwiftyJSON: 04ccea08915aa0109039157c7974cf0298da292a
